@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge'
 
 import Button from '@/components/Button'
 
-export default function SchemaSection() {
+export default function WebpageSection() {
 	const schema = [
 		{
 			type: 'Article',
@@ -58,34 +58,23 @@ export default function SchemaSection() {
 	}
 
 	return (
-		<div className='px-12 py-8 text-sm'>
-			<Button onSubmit={AutoDetectSchemaMarkup}>
-				✨ Auto Detect Schema Markup
-			</Button>
+		<div className='px-12 py-8'>
+			<Button>Schedule / Publish</Button>
 
-			<div className='mb-2 mt-8 font-semibold text-neutral-400'>Current:</div>
-			<div className='flex flex-col gap-2'>
-				{schema.map((schema) => (
-					<div
-						key={schema.properties.id}
-						className={twMerge(
-							'line-clamp-1 w-full truncate rounded-md border border-neutral-800 px-4 py-2.5 font-medium text-neutral-300',
-							'hover:bg-neutral-900',
-						)}
-					>
-						<schema.icon className='-mt-1 mr-2 inline-block' />
-						<span className='mr-1'>{schema.type}:</span>
-						<span className='text-neutral-400'>{schema.properties.name}</span>
-					</div>
-				))}
-			</div>
+			<div>Crawl Status</div>
 
-			<div className='mb-2 mt-8 font-semibold text-neutral-400'>
-				Recommendations:
-			</div>
-			<div className='flex flex-col gap-2'>
-				{schemaRecommendations.length ? (
-					schema.map((schema) => (
+			<div>Canonical Links</div>
+
+			<div>Open Graph</div>
+
+			<div className='py-8 text-sm'>
+				<Button onSubmit={AutoDetectSchemaMarkup}>
+					✨ Auto Detect Schema Markup
+				</Button>
+
+				<div className='mb-2 mt-8 font-semibold text-neutral-400'>Current:</div>
+				<div className='flex flex-col gap-2'>
+					{schema.map((schema) => (
 						<div
 							key={schema.properties.id}
 							className={twMerge(
@@ -97,12 +86,35 @@ export default function SchemaSection() {
 							<span className='mr-1'>{schema.type}:</span>
 							<span className='text-neutral-400'>{schema.properties.name}</span>
 						</div>
-					))
-				) : (
-					<div className='mx-auto my-8 w-3/4 text-center font-medium text-neutral-500'>
-						No recommendations, you already have the best schema markup! 🎉🎉
-					</div>
-				)}
+					))}
+				</div>
+
+				<div className='mb-2 mt-8 font-semibold text-neutral-400'>
+					Recommendations:
+				</div>
+				<div className='flex flex-col gap-2'>
+					{schemaRecommendations.length ? (
+						schema.map((schema) => (
+							<div
+								key={schema.properties.id}
+								className={twMerge(
+									'line-clamp-1 w-full truncate rounded-md border border-neutral-800 px-4 py-2.5 font-medium text-neutral-300',
+									'hover:bg-neutral-900',
+								)}
+							>
+								<schema.icon className='-mt-1 mr-2 inline-block' />
+								<span className='mr-1'>{schema.type}:</span>
+								<span className='text-neutral-400'>
+									{schema.properties.name}
+								</span>
+							</div>
+						))
+					) : (
+						<div className='mx-auto my-8 w-3/4 text-center font-medium text-neutral-500'>
+							No recommendations, you already have the best schema markup! 🎉🎉
+						</div>
+					)}
+				</div>
 			</div>
 		</div>
 	)

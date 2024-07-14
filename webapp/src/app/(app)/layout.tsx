@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { LuCog, LuGlobe, LuUser } from 'react-icons/lu'
 
 const NavigationItems = [
 	{ name: 'Dashboard', href: '/dashboard' },
@@ -20,15 +21,12 @@ const NavigationItems = [
 			{ name: 'Guest Posts', href: '/guest-posts' },
 		],
 	},
+	// { name: 'Newsletter', items: [] },
 	{ name: 'Media', href: '/media' },
-	{ name: 'Rank Manager', href: '/rank-manager' },
-	{ name: 'Brand Manager', href: '/brand-manager' },
-	{ name: 'User Analytics', href: '/user-analytics' },
-	{ name: 'Web Performance', href: '/web-performance' }, // Core Web Vitals & Unlighthouse Score
-	// ---
-	// { name: 'Settings', href: '/settings' }, // TODO: Hide this because it is not often used
-	// { name: 'Site Settings', href: '/site-settings' }, // TODO: Hide this because it is not often used
-	// { name: 'Account Settings', href: '/account' }, // TODO: Hide this because it is not often used
+	// { name: 'Rank Manager', href: '/rank-manager' },
+	{ name: 'Brand', href: '/brand' },
+	// { name: 'User Analytics', href: '/user-analytics' },
+	{ name: 'Site Experience', href: '/site-experience' },
 ]
 
 export default function AppLayout({
@@ -78,8 +76,28 @@ export default function AppLayout({
 				)}
 
 				<div className='absolute bottom-0 left-0 my-4 w-full'>
-					<div className='mx-auto w-fit rounded border border-neutral-800 px-2 py-1 font-mono text-xs font-medium text-neutral-500'>
+					<div className='mx-auto mb-6 w-fit rounded border border-neutral-800 px-2 py-1 font-mono text-xs font-medium text-neutral-500'>
 						OFFLINE
+					</div>
+					<div className='flex flex-row justify-between px-8'>
+						<Link
+							href='site-settings'
+							className='text-neutral-600 hover:text-neutral-300'
+						>
+							<LuGlobe className='size-5' />
+						</Link>
+						<Link
+							href='account'
+							className='text-neutral-600 hover:text-neutral-300'
+						>
+							<LuUser className='size-5' />
+						</Link>
+						<Link
+							href='settings'
+							className='text-neutral-600 hover:text-neutral-300'
+						>
+							<LuCog className='size-5' />
+						</Link>
 					</div>
 				</div>
 			</nav>

@@ -11,7 +11,7 @@ export default function TabLayout({
 		component: () => React.JSX.Element
 	}[]
 }>) {
-	const [tabIndex, setTabIndex] = useState(4)
+	const [tabIndex, setTabIndex] = useState(2)
 	const Component = tabs[tabIndex].component
 	return (
 		<aside className={twMerge('relative', className)}>
@@ -22,10 +22,11 @@ export default function TabLayout({
 						type='button'
 						onClick={() => setTabIndex(index)}
 						className={twMerge(
-							'block cursor-default py-2.5 text-neutral-400',
+							'relative block cursor-default py-2.5 text-neutral-500',
+							'after:absolute after:bottom-0 after:left-0 after:h-0 after:w-full',
 							index === tabIndex
-								? 'bg-neutral-800 text-neutral-200'
-								: 'hover:bg-neutral-900 hover:text-neutral-300',
+								? 'text-neutral-200 after:border-b'
+								: 'hover:text-neutral-300 hover:after:block hover:after:border-b hover:after:border-neutral-500',
 						)}
 					>
 						{item.name}

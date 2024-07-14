@@ -1,0 +1,1 @@
+https://github.com/serpapi/awesome-seo-tools?tab=readme-ov-file#all-in-one-seo-tools

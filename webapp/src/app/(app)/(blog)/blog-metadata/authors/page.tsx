@@ -1,7 +1,7 @@
-export default function BlogMetadataDefaultPage() {
+export default function BlogMetadataAuthorsPage() {
 	return (
 		<div className='flex h-screen items-center justify-center'>
-			Select a Section
+			Select an Author
 		</div>
 	)
 }

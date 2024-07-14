@@ -11,7 +11,7 @@ import ContentPreview from './content/ContentPreview'
 import ContentSection from './sections/content'
 import KeywordsSection from './sections/keywords'
 import LinksSection from './sections/links'
-import SchemaSection from './sections/schema'
+import MediaSection from './sections/media'
 import WebpageSection from './sections/webpage'
 
 enum View {
@@ -37,11 +37,11 @@ export default function EditBlogPostPage({
 		content: 'Blog Content',
 	}
 
+	// TODO: Always open Preview by default
 	const [currentView, setCurrentView] = useState<View>(View.Editor)
 
 	return (
 		<div className='grid h-screen grid-cols-[auto_24rem]'>
-			{/* cursor-text select-text */}
 			<div className='balance-overflow hide-scrollbar relative overflow-auto'>
 				<header className='sticky left-0 top-0 flex flex-row items-center justify-between border-b border-neutral-800 backdrop-blur-lg'>
 					<HeaderButton icon={LuArrowLeft}>Back</HeaderButton>
@@ -72,10 +72,10 @@ export default function EditBlogPostPage({
 				className='border-l border-neutral-800'
 				tabs={[
 					{ name: 'Webpage', component: WebpageSection },
-					{ name: 'Schema', component: SchemaSection },
 					{ name: 'Content', component: ContentSection },
-					{ name: 'Keywords', component: KeywordsSection },
 					{ name: 'Links', component: LinksSection },
+					{ name: 'Media', component: MediaSection },
+					{ name: 'Keywords', component: KeywordsSection },
 				]}
 			/>
 		</div>
