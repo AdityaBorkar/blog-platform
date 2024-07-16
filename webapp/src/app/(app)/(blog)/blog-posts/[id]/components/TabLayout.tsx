@@ -15,7 +15,7 @@ export default function TabLayout({
 	const Component = tabs[tabIndex].component
 	return (
 		<aside className={twMerge('relative', className)}>
-			<header className='sticky top-0 grid grid-cols-5 border-b border-neutral-800 text-center text-sm'>
+			<header className='sticky top-0 grid grid-cols-5 border-b border-neutral-800 text-center'>
 				{tabs.map((item, index) => (
 					<button
 						key={item.name}

@@ -67,7 +67,7 @@ export default function WebpageSection() {
 
 			<div>Open Graph</div>
 
-			<div className='py-8 text-sm'>
+			<div className='py-8'>
 				<Button onSubmit={AutoDetectSchemaMarkup}>
 					✨ Auto Detect Schema Markup
 				</Button>

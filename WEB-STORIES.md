@@ -1,0 +1,36 @@
+- Web Stories
+    - Read:
+        - https://developers.google.com/search/docs/appearance/web-stories-creation-best-practices
+        - https://search.google.com/test/amp
+        - https://support.google.com/webmasters/answer/9012289
+        - https://amp.dev/documentation/components/amp-story#metadata-guidelines
+        - https://amp.dev/documentation/components/stories/amp-story-page
+        - https://developers.google.com/search/docs/appearance/enable-web-stories
+    - Design Guidelines:
+        - Avoid including multiple pages with walls of text. Consider reducing text to approximately 280 characters per page.
+        - Make sure text is not blocked by other content on the page. Avoid burned in text; by not using burned in text, you prevent text from being blocked when it gets resized to fit various device sizes.
+        - Bring your stories to life with animations. Avoid distracting or repetitive animations which can cause fatigue.
+        - Use full bleed videos and images
+        - Use Web Stories-specific call to action
+        - Avoid low resolution or distorted images and videos	
+        - Shorten video length	15s - 60s per page
+        - Use high-quality audio clips that are at least 5 seconds long with balanced volume, and ensure speech is audible.
+        - Auto-advanced experience for video-based Web Stories could work well for a laid back experience.
+    - Technicals:
+        - Validate: https://validator.ampproject.org/
+        - Add a logo to your cover page	
+        - Descriptive title that is shorter than 70 characters. (max 90 characters)
+        - title and description meta tags
+        - Add Web Stories to sitemap
+        - Make sure that each Web Story has a link rel="canonical" to itself. For example: <link rel="canonical" href="https://www.example.com/url/to/webstory.html">
+        - Localization: https://developers.google.com/search/docs/specialty/international/localized-versions
+        - Structured Data
+        - https://ogp.me/
+        - Twitter Cards: https://developer.x.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
+        - We recommend including alt text on your images to improve your story's discoverability.
+        - We recommend integrating Web Stories into your website, such as linking them from your home page or category pages where applicable. For example, if your Web Story is about a travel destination and you have a page that lists all your travel articles, then also link the Web Stories on that category page. An additional special landing page like www.example.com/stories (which would then be linked from key pages like your home page) might also make sense
+        - Add Captions to your videos: https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video
+        - AMP story page attachments can be used to present additional information alongside your Web Story. This can be useful to provide extra detail, deep dives, or onward journeys for the content presented in your Web Story.
+        - We recommend that you use semantic HTML to build your Web Story. However, some Web Story editor tools may instead export a story that formats each slide as a video file that bakes in all the text into the video. In this case, we recommend that you add the precise text displayed inside of the video as a title attribute on the amp-video element. Again, only do this if you can't use semantic markup in your Web Stories.
+        - To enable Web Stories to appear in desktop Google Search results, add support for landscape displays.
+        (https://amp.dev/documentation/examples/style-layout/desktop_and_landscape_mode_support/)
