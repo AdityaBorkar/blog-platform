@@ -1,7 +1,0 @@
-export default function BlogMetadataDefaultPage() {
-	return (
-		<div className='flex h-screen items-center justify-center'>
-			Select a Section
-		</div>
-	)
-}

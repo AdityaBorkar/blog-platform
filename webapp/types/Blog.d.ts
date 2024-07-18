@@ -1,5 +1,5 @@
 type BlogAuthor = {
-	id: number
+	id: string
 	name: string
 	image: string
 	slug: string
@@ -11,7 +11,7 @@ type BlogAuthor = {
 }
 
 type BlogTag = {
-	id: number
+	id: string
 	name: string
 	slug: string
 	publicPage: boolean
@@ -22,7 +22,7 @@ type BlogTag = {
 }
 
 type BlogCategory = {
-	id: number
+	id: string
 	name: string
 	slug: string
 	description: string
@@ -40,13 +40,17 @@ type BlogCategory = {
 }
 
 type BlogPost = {
-	id: number
+	id: string
 	date: string
 	modified: string
 	slug: string
 	status: string
 	link: string
-	title: {
-		rendered: string
-	}
+	title: string
+	description: string
+	chronical: { id: string; name: string; slug: string }
+	content: string
+	author: string[]
+	tags: string[]
+	categories: string[]
 }

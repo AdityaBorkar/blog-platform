@@ -1,6 +1,6 @@
 export const tags = [
 	{
-		id: 746,
+		id: '746',
 		name: '217 padmini dham marathi natak',
 		slug: '217-padmini-dham-marathi-natak',
 		blogPosts: { count: 0 },
