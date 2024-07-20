@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { BiGridAlt, BiListUl, BiPlus } from 'react-icons/bi'
 import { twMerge } from 'tailwind-merge'
 
-import { BlogDataAtom } from './[id]/state'
+import { BlogDataAtom } from './[id]/atoms'
 import NavButton from '@/components/NavButton'
 import SearchInput from '@/components/SearchInput'
 import Select from '@/components/Select'
@@ -114,7 +114,7 @@ export default function BlogPosts() {
 	)
 }
 
-function PostListItem({ post }: { post: BlogPost }) {
+function PostListItem({ post }: { post: BlogPost.Record }) {
 	return (
 		<TableCell
 			className={twMerge(
@@ -132,14 +132,14 @@ function PostListItem({ post }: { post: BlogPost }) {
 			/>
 			<div>{post.categories}</div>
 			<div>
-				{new Date(post.modified).toLocaleDateString('en', {
+				{new Date(post.updatedAt).toLocaleDateString('en', {
 					year: 'numeric',
 					month: 'short',
 					day: 'numeric',
 				})}
 			</div>
 			<div>
-				{new Date(post.modified).toLocaleDateString('en', {
+				{new Date(post.updatedAt).toLocaleDateString('en', {
 					year: 'numeric',
 					month: 'short',
 					day: 'numeric',
@@ -149,7 +149,7 @@ function PostListItem({ post }: { post: BlogPost }) {
 	)
 }
 
-function PostGridItem({ post }: { post: BlogPost }) {
+function PostGridItem({ post }: { post: BlogPost.Record }) {
 	return (
 		<Link
 			href={`/blog-posts/${post.id}`}

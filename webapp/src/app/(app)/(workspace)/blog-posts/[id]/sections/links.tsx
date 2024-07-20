@@ -1,28 +1,33 @@
+import { useAtomValue } from 'jotai'
 import type { IconType } from 'react-icons'
-import {
-	LuArrowDownLeft,
-	LuArrowUpRight,
-	LuLink2,
-	LuUnlink,
-} from 'react-icons/lu'
+import { LuArrowUpRight, LuLink2, LuUnlink } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
-type BlogPost_Link = {}
+import { ExternalLinks, InternalLinks } from '../atoms'
 
 export default function LinksSection() {
-	// TODO: Collection Strategy
-	// TODO: Link Analyzer Tool
-	// TODO: Link Analyzer Algorithm
-	// TODO: Use external APIs and AI models for analysis
+	const internalLinks = useAtomValue(InternalLinks)
+	const externalLinks = useAtomValue(ExternalLinks)
 
-	// TODO: Fetch internal links - title, description, tags, page authority
-	// TODO: Fetch external links - title, description, tags, page authority
+	console.log({ internalLinks, externalLinks })
 
-	const internalLinks = [
-		{ text: '', href: '' },
-		{ text: '', href: '' },
-		{ text: '', href: '' },
-	]
+	// Content Sampler: Run in a Web Worker -> Run analyzer in web worker -> update `state` using ExternalStore from Jotai
+
+	// TODO: ADD: Link Analyzer Tool
+
+	// USE:
+	// Link Velocity: Monitor the rate at which you are acquiring new backlinks.
+	// Link Diversity: A mix of different types of links (e.g., from blogs, news sites, forums) is generally healthier than links from a single source type.
+	// Link Freshness
+
+	// - Detect continous links and ask to separate them
+
+	// Good anchor text is descriptive, reasonably concise, and relevant to the page that it's on and to the page it links to. It provides context for the link, and sets the expectation for your readers. The better your anchor text, the easier it is for people to navigate your site and for Google to understand what the page you're linking to is about.
+	// Remember to give context to your links: the words before and after links matter, so pay attention to the sentence as a whole. Don't chain up links next to each other; it's harder for your readers to distinguish between links, and you lose surrounding text for each link.
+	// Linking to other sites isn't something to be scared of; in fact, using external links can help establish trustworthiness (for example, citing your sources). Link out to external sites when it makes sense, and provide context to your readers about what they can expect.
+
+	// add title tag to `a`
+	// (replace with title / add short block / add OG Preview Block)
 	// * hreflang
 	// * referrerpolicy
 	// no-referrer
@@ -48,104 +53,13 @@ export default function LinksSection() {
 	// tag
 	// type: text/html / PDF / ...
 
-	const externalLinks = [
-		{ text: '', href: '' },
-		{ text: '', href: '' },
-		{ text: '', href: '' },
-	]
-
-	// const inboundLinks = [
-	// 	{
-	// 		anchor: '1',
-	// 		text: '',
-	// 		href: '',
-	// 		domain: {
-	// 			name: '',
-	// 			authority: 12,
-	// 			isSpam: false,
-	// 		},
-	// 		checks: {
-	// 			pass: true,
-	// 			errors: [],
-	// 			anchorTextRelevant: true,
-	// 			isRelevant: true,
-	// 			pageAuthority: 12,
-	// 		},
-	// 	},
-	// ]
-	// const externalLinks = [
-	// 	{
-	// 		anchor: '1',
-	// 		text: '',
-	// 		href: '',
-	// 		domain: {
-	// 			name: '',
-	// 			authority: 12,
-	// 			isSpam: false,
-	// 		},
-	// 		checks: {
-	// 			pass: true,
-	// 			errors: [],
-	// 			anchorTextRelevant: true,
-	// 			isRelevant: true,
-	// 			pageAuthority: 12,
-	// 		},
-	// 	},
-	// ]
-	// const internalLinks = [
-	// 	{
-	// 		anchor: '1',
-	// 		text: '',
-	// 		href: '',
-	// 		domain: {
-	// 			name: '',
-	// 			authority: 12,
-	// 			isSpam: false,
-	// 		},
-	// 		checks: {
-	// 			pass: true,
-	// 			errors: [],
-	// 			anchorTextRelevant: true,
-	// 			// descriptive, keyword-rich anchor texts
-	// 			// Assess the structure of internal links to ensure they guide users effectively and indicate the importance of different pages to search engines.
-	// 			isRelevant: true,
-	// 			pageAuthority: 12,
-	// 		},
-	// 	},
-	// ]
-	// Link Analyzer -
-	// Inbound Backlinks with PA, do/no-follow
-	// Outbound Backlinks with PA, do/no-follow
-	// Broken Links
-	// TODO: Subscribe to Content / Link Content / Run in a Web Worker
-	// USE: Google’s Disavow Links Tool
-	// Link Velocity: Monitor the rate at which you are acquiring new backlinks.
-	// Link Diversity: A mix of different types of links (e.g., from blogs, news sites, forums) is generally healthier than links from a single source type.
-	// Link Freshness
-
-	// ---
-
-	// Anchors:
-	// Ensure that the anchor text provides a good user experience by being relevant and informative.
-	// Anchors should be concise yet descriptive enough to inform users and search engines about the link's content.
-	// The text used for anchors should be relevant to the content of the linked page.
-	// Use keywords strategically in anchor text but avoid over-optimization or keyword stuffing.
-	// It's important for the anchor text to match the destination URL’s topic to maximize its SEO value.
-
 	return (
 		<div className='py-4 text-sm *:px-8'>
 			<div className='flex flex-row justify-around !px-4 py-4 text-center'>
 				<LinkStat icon={LuUnlink} number={0} name='Broken' />
 				<LinkStat icon={LuLink2} number={4} name='Internal' />
 				<LinkStat icon={LuArrowUpRight} number={11} name='External' />
-				<LinkStat icon={LuArrowDownLeft} number={4} name='Inbound' />
-			</div>
-
-			<div className='mb-2 mt-8 font-semibold'>Outgoing Links</div>
-			<div>
-				{externalLinks.map((link) => (
-					<LinkBlock key={link.anchor} link={link} />
-				))}
+				{/* <LinkStat icon={LuArrowDownLeft} number={4} name='Inbound' /> */}
 			</div>
 
 			<div className='mb-2 mt-8 font-semibold'>Internal Links</div>
@@ -155,9 +69,9 @@ export default function LinksSection() {
 				))}
 			</div>
 
-			<div className='mb-2 mt-8 font-semibold'>Incoming Links</div>
+			<div className='mb-2 mt-8 font-semibold'>Outgoing Links</div>
 			<div>
-				{inboundLinks.map((link) => (
+				{externalLinks.map((link) => (
 					<LinkBlock key={link.anchor} link={link} />
 				))}
 			</div>
@@ -188,6 +102,7 @@ function LinkStat(props: { icon: IconType; number: number; name: string }) {
 	)
 }
 
-function LinkBlock(props: { link: BlogPost_Link }) {
+function LinkBlock(props: { link: BlogPost.Link }) {
+	const { text, href } = props.link
 	return <div></div>
 }

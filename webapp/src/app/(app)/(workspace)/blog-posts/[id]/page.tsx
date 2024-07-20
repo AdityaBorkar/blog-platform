@@ -7,6 +7,7 @@ import type { IconType } from 'react-icons'
 import { LuArrowLeft, LuEye, LuPenSquare } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
+import { BlogDataAtom } from './atoms'
 import TabLayout from './components/TabLayout'
 import ContentEditor from './content/ContentEditor'
 import ContentPreview from './content/ContentPreview'
@@ -15,7 +16,6 @@ import KeywordsSection from './sections/keywords'
 import LinksSection from './sections/links'
 import MediaSection from './sections/media'
 import WebpageSection from './sections/webpage'
-import { BlogDataAtom } from './state'
 import LoadingSpinner from '@/components/LoadingSpinner'
 
 enum View {
@@ -35,20 +35,27 @@ export default function EditBlogPostPage({
 		// TODO: const blog = READ FROM LocalStorage
 		const blog = {
 			id: blogId,
-			title: 'Building an open-source blog platform!',
+			authors: ['Blog Author'],
+			canonical: 'https://example.com',
+			category: 'Blog Category',
+			chronical: { id: '1', name: '2023', slug: '2023' },
+			content: {
+				mdx: 'Blog Content',
+				links: {
+					internal: [],
+					external: [],
+				},
+			},
 			description:
 				"My story about the journey to build a blog platform that I'm proud of.",
-			author: ['Blog Author'],
-			categories: ['Blog Category'],
-			tags: ['Blog Tag 1', 'Blog Tag 2'],
-			content: 'Blog Content',
-			chronical: { id: '1', name: '2023', slug: '2023' },
-			date: '2023-01-01',
-			modified: '2023-01-01',
+			lastEditedAt: new Date('2023-01-01'),
+			publishedAt: new Date('2023-01-01'),
+			updatedAt: new Date('2023-01-01'),
 			slug: 'building-an-open-source-blog-platform-for-myself',
-			status: 'publish',
-			link: 'https://example.com',
-		} satisfies BlogPost
+			status: 'DRAFT',
+			tags: ['Blog Tag 1', 'Blog Tag 2'],
+			title: 'Building an open-source blog platform!',
+		} satisfies BlogPost.Record
 
 		setBlogData(blog)
 	}, [params.id, setBlogData])

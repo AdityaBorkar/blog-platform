@@ -1,3 +1,31 @@
+namespace BlogPost {
+	type Link = {
+		text: string
+	}
+	type Record = {
+		id: string
+		updatedAt: Date
+		publishedAt: Date
+		lastEditedAt: Date
+		slug: string
+		title: string
+		status: 'DRAFT' | 'PUBLISHED'
+		canonical: string
+		description: string
+		chronical: { id: string; name: string; slug: string }
+		authors: string[]
+		category: string
+		tags: string[]
+		content: {
+			mdx: string
+			links: {
+				internal: Link[]
+				external: Link[]
+			}
+		}
+	}
+}
+
 type BlogAuthor = {
 	id: string
 	name: string
@@ -37,20 +65,4 @@ type BlogCategory = {
 	blogPosts: {
 		count: number
 	}
-}
-
-type BlogPost = {
-	id: string
-	date: string
-	modified: string
-	slug: string
-	status: string
-	link: string
-	title: string
-	description: string
-	chronical: { id: string; name: string; slug: string }
-	content: string
-	author: string[]
-	tags: string[]
-	categories: string[]
 }

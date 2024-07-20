@@ -1,14 +1,18 @@
 import { twMerge } from 'tailwind-merge'
 
+export namespace Button {
+	type Size = 'sm'
+	export type Props = React.HTMLAttributes<HTMLButtonElement> & {
+		size?: Size
+	}
+}
+
 export default function Button({
 	size,
-
 	children,
 	className,
 	...props
-}: React.HTMLAttributes<HTMLButtonElement> & {
-	size?: 'sm'
-}) {
+}: Button.Props) {
 	return (
 		<button
 			type='button'
