@@ -1,10 +1,9 @@
-import type { PrimitiveAtom } from 'jotai'
 import { useAtom } from 'jotai'
 import { useId } from 'react'
 import { LuEyeOff } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
-import { BlogDataAtom } from '../atoms'
+import { BlogPost } from '../atoms'
 
 export default function MetadataInput({
 	param,
@@ -20,7 +19,7 @@ export default function MetadataInput({
 	readOnly?: boolean
 }>) {
 	const uuid = useId()
-	const [value, setValue] = useAtom(BlogDataAtom)
+	const [value, setValue] = useAtom(BlogPost)
 	console.log('I am rendering MetadataInput: ', label)
 
 	return (

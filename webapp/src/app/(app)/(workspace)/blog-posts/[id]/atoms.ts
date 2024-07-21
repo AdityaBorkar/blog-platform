@@ -2,7 +2,7 @@ import { atom } from 'jotai'
 
 import $atom from '@/utils/$atom'
 
-export const BlogDataAtom = atom<BlogPost.Record>({
+export const BlogPost = atom<Blog.Post>({
 	id: '',
 	updatedAt: new Date(),
 	publishedAt: new Date(),
@@ -29,26 +29,26 @@ export const BlogDataAtom = atom<BlogPost.Record>({
 	},
 })
 
-export const Title = $atom(BlogDataAtom, 'content')
+export const Title = $atom(BlogPost, 'title')
 
-export const Description = $atom(BlogDataAtom, 'description')
+export const Description = $atom(BlogPost, 'description')
 
-export const PublishedAt = $atom(BlogDataAtom, 'publishedAt')
+export const PublishedAt = $atom(BlogPost, 'publishedAt')
 
-export const LastEditedAt = $atom(BlogDataAtom, 'lastEditedAt')
+export const LastEditedAt = $atom(BlogPost, 'lastEditedAt')
 
-export const UpdatedAt = $atom(BlogDataAtom, 'updatedAt')
+export const UpdatedAt = $atom(BlogPost, 'updatedAt')
 
-export const Chronical = $atom(BlogDataAtom, 'chronical')
+export const Chronical = $atom(BlogPost, 'chronical')
 
-export const Authors = $atom(BlogDataAtom, 'authors')
+export const Authors = $atom(BlogPost, 'authors')
 
-export const Category = $atom(BlogDataAtom, 'category')
+export const Category = $atom(BlogPost, 'category')
 
-export const Tags = $atom(BlogDataAtom, 'tags')
+export const Tags = $atom(BlogPost, 'tags')
 
-export const Content = $atom(BlogDataAtom, 'content.mdx')
+export const Content = $atom(BlogPost, 'content.mdx')
 
-export const InternalLinks = $atom(BlogDataAtom, 'content.links.internal')
+export const InternalLinks = $atom(BlogPost, 'content.links.internal')
 
-export const ExternalLinks = $atom(BlogDataAtom, 'content.links.external')
+export const ExternalLinks = $atom(BlogPost, 'content.links.external')

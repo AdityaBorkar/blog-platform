@@ -21,4 +21,4 @@ export const categories = [
 		color: 'green',
 		blogPosts: { count: 12 },
 	},
-] satisfies BlogCategory[]
+] satisfies Blog.Category[]

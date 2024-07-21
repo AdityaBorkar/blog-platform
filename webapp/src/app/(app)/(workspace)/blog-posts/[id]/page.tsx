@@ -1,13 +1,14 @@
 'use client'
 
-import { useAtom } from 'jotai'
+import { useAtomValue, useSetAtom } from 'jotai'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { IconType } from 'react-icons'
 import { LuArrowLeft, LuEye, LuPenSquare } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
-import { BlogDataAtom } from './atoms'
+import { BlogPost, Title } from './atoms'
 import TabLayout from './components/TabLayout'
 import ContentEditor from './content/ContentEditor'
 import ContentPreview from './content/ContentPreview'
@@ -23,12 +24,14 @@ enum View {
 	Editor = 1,
 }
 
+//  const Page = dynamic(EditBlogPostPage, { ssr: false })
+//  export default Page
 export default function EditBlogPostPage({
 	params,
 }: Readonly<{
 	params: { id: string }
 }>) {
-	const [BlogData, setBlogData] = useAtom(BlogDataAtom)
+	const setBlogData = useSetAtom(BlogPost)
 
 	useEffect(() => {
 		const blogId = params.id
@@ -40,7 +43,7 @@ export default function EditBlogPostPage({
 			category: 'Blog Category',
 			chronical: { id: '1', name: '2023', slug: '2023' },
 			content: {
-				mdx: 'Blog Content',
+				mdx: '<p>Hello World! 🌎️</p>',
 				links: {
 					internal: [],
 					external: [],
@@ -55,7 +58,7 @@ export default function EditBlogPostPage({
 			status: 'DRAFT',
 			tags: ['Blog Tag 1', 'Blog Tag 2'],
 			title: 'Building an open-source blog platform!',
-		} satisfies BlogPost.Record
+		} satisfies Blog.Post
 
 		setBlogData(blog)
 	}, [params.id, setBlogData])
@@ -63,12 +66,12 @@ export default function EditBlogPostPage({
 	// TODO: Always open Preview by default
 	const [view, setView] = useState<View>(View.Editor)
 
-	if (!BlogData.id)
-		return (
-			<div className='flex h-screen items-center justify-center'>
-				<LoadingSpinner />
-			</div>
-		)
+	// if (!BlogData.id)
+	// 	return (
+	// 		<div className='flex h-screen items-center justify-center'>
+	// 			<LoadingSpinner />
+	// 		</div>
+	// 	)
 	return (
 		<div className='grid h-screen grid-cols-[auto_24rem]'>
 			<div className='balance-overflow hide-scrollbar relative overflow-auto'>
@@ -82,7 +85,7 @@ export default function EditBlogPostPage({
 						Back to "All Blog Posts"
 					</HeaderButton>
 					<div className='grow cursor-text select-text px-8 py-2.5 text-center'>
-						{BlogData?.title}
+						<BlogTitle />
 					</div>
 					{view === View.Editor ? (
 						<HeaderButton
@@ -153,4 +156,9 @@ function HeaderButton({
 			{children}
 		</button>
 	)
+}
+
+function BlogTitle() {
+	const title = useAtomValue(Title)
+	return <>{title}</>
 }

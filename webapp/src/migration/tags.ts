@@ -6,6 +6,6 @@ export const tags = [
 		blogPosts: { count: 0 },
 		publicPage: true,
 	},
-] satisfies BlogTag[]
+] satisfies Blog.Tag[]
 
 // 7 pages with 100 results on each page

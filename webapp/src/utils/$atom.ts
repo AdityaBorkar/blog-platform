@@ -25,12 +25,11 @@ export default function $atom<T, P extends Path<T>>(
 			// biome-ignore lint/security/noGlobalEval: <explanation>
 			return eval(`atom.${path}`)
 		},
-		(get, set, newValue: BlogPost.Link[]) => {
-			set(dataAtom, (prev) => {
+		(get, set, newValue: Blog.Link[]) =>
+			set(dataAtom, (data) => {
 				// biome-ignore lint/security/noGlobalEval: <explanation>
-				eval(`prev.${path} = newValue`)
-				return prev
-			})
-		},
+				eval(`data.${path} = newValue`)
+				return { ...data }
+			}),
 	)
 }

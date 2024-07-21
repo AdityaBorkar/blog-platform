@@ -1,8 +1,49 @@
-namespace BlogPost {
+namespace Blog {
+	type Author = {
+		id: string
+		name: string
+		image: string
+		slug: string
+		description: string
+		// NoSQL:
+		blogPosts: {
+			count: number
+		}
+	}
+
+	type Tag = {
+		id: string
+		name: string
+		slug: string
+		publicPage: boolean
+		// NoSQL:
+		blogPosts: {
+			count: number
+		}
+	}
+
+	type Category = {
+		id: string
+		name: string
+		slug: string
+		description: string
+		color: string
+		publicPage: boolean
+		parent: {
+			id: number
+			name: string
+			slug: string
+		} | null
+		// NoSQL:
+		blogPosts: {
+			count: number
+		}
+	}
+
 	type Link = {
 		text: string
 	}
-	type Record = {
+	type Post = {
 		id: string
 		updatedAt: Date
 		publishedAt: Date
@@ -23,46 +64,5 @@ namespace BlogPost {
 				external: Link[]
 			}
 		}
-	}
-}
-
-type BlogAuthor = {
-	id: string
-	name: string
-	image: string
-	slug: string
-	description: string
-	// NoSQL:
-	blogPosts: {
-		count: number
-	}
-}
-
-type BlogTag = {
-	id: string
-	name: string
-	slug: string
-	publicPage: boolean
-	// NoSQL:
-	blogPosts: {
-		count: number
-	}
-}
-
-type BlogCategory = {
-	id: string
-	name: string
-	slug: string
-	description: string
-	color: string
-	publicPage: boolean
-	parent: {
-		id: number
-		name: string
-		slug: string
-	} | null
-	// NoSQL:
-	blogPosts: {
-		count: number
 	}
 }

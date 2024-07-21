@@ -47,4 +47,4 @@ export const authors = [
 		// 	},
 		// },
 	},
-] satisfies BlogAuthor[]
+] satisfies Blog.Author[]

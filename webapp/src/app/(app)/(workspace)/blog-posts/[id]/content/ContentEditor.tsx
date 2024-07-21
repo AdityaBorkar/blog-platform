@@ -11,6 +11,7 @@ import {
 	Title,
 	UpdatedAt,
 } from '../atoms'
+import MdxEditor from '../components/MdxEditor'
 import MetadataInput from '../components/MetadataInput'
 
 export default function ContentEditor() {
@@ -35,7 +36,7 @@ export default function ContentEditor() {
 				/>
 				<MetadataInput atom={Authors} label='Authors:' />
 				<MetadataInput atom={Category} label='Category:' />
-				<MetadataInput atom={Chronical} label='Chronical:' />
+				<MetadataInput atom={Chronical} label='Chronical:' internal />
 				<MetadataInput atom={Tags} label='Tags:' className='col-span-3' />
 				<MetadataInput atom={PublishedAt} label='Published on:' readOnly />
 				<MetadataInput atom={UpdatedAt} label='Updated on:' readOnly />
@@ -48,8 +49,7 @@ export default function ContentEditor() {
 			</div>
 
 			<div className='mb-96 cursor-text select-text px-8'>
-				{/* {BlogData.content.mdx} */}
-				{/* Editor - MDX + Hemingway */}
+				<MdxEditor />
 			</div>
 		</div>
 	)

@@ -19,7 +19,6 @@ export default function MetadataInput<T>({
 }>) {
 	const uuid = useId()
 	const [value, setValue] = useAtom(atom)
-	console.log('I am rendering MetadataInput: ', label)
 
 	return (
 		<label htmlFor={uuid} className={twMerge('px-8 py-2', className)}>
@@ -44,7 +43,10 @@ export default function MetadataInput<T>({
 				// TODO: H-AUTO EXPANDING
 				name={uuid}
 				defaultValue={value}
-				onChange={(e) => setValue(e.target.value)}
+				onChange={(e) => {
+					// console.log('onChange: ', e.target.value)
+					setValue(e.target.value)
+				}}
 				className={twMerge(
 					'h-au -ml-2 w-full cursor-text select-text rounded-md px-2 py-2 text-neutral-900 focus:outline-1 focus:outline-neutral-200',
 					'dark:text-neutral-300',

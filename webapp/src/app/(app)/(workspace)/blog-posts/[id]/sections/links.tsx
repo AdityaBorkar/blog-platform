@@ -102,7 +102,7 @@ function LinkStat(props: { icon: IconType; number: number; name: string }) {
 	)
 }
 
-function LinkBlock(props: { link: BlogPost.Link }) {
+function LinkBlock(props: { link: Blog.Link }) {
 	const { text, href } = props.link
 	return <div></div>
 }
