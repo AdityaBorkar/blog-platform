@@ -1,4 +1,4 @@
-type Chronical = {
+type Chronicle = {
 	id: string
 	name: string
 	image: string

@@ -1,6 +1,7 @@
 import { LuCalendar, LuFile, LuUser } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
+import AiButton from '@/components/AiButton'
 import Button from '@/components/Button'
 
 export default function WebpageSection() {
@@ -61,31 +62,16 @@ export default function WebpageSection() {
 		<div className='px-12 py-8'>
 			<Button>Schedule / Publish</Button>
 
-			<div>Crawl Status</div>
-
-			<div>
-				<div>Canonical Links</div>
-				<div>We recommend you to setup canonical elsewhere.</div>
-			</div>
+			{/* <div>Crawl Status</div> */}
 
 			<div className='mb-4 mt-8 flex flex-row justify-between'>
 				<h3 className='font-semibold text-neutral-700'>Open Graph</h3>
-				<Button
-					className='bg-purple-700 text-white'
-					onSubmit={AutoDetectSchemaMarkup}
-				>
-					✨
-				</Button>
+				{/* <AiButton>✨</AiButton> */}
 			</div>
 
 			<div className='mb-4 mt-8 flex flex-row justify-between'>
 				<h3 className='font-semibold text-neutral-700'>Schema Markup</h3>
-				<Button
-					className='bg-purple-700 text-white'
-					onSubmit={AutoDetectSchemaMarkup}
-				>
-					✨
-				</Button>
+				{/* <AiButton>✨</AiButton> */}
 			</div>
 
 			<div className='flex flex-col gap-2'>
@@ -93,15 +79,21 @@ export default function WebpageSection() {
 					<div
 						key={schema.properties.id}
 						className={twMerge(
-							'line-clamp-1 w-full truncate rounded-md border border-neutral-800 px-4 py-2.5 font-medium text-neutral-300',
-							'hover:bg-neutral-900',
+							'block w-full truncate rounded-md border border-neutral-200 px-4 py-2.5 font-medium text-neutral-400 hover:bg-neutral-200/50',
+							'dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-900',
 						)}
 					>
-						<schema.icon className='-mt-1 mr-2 inline-block' />
-						<span className='mr-1'>{schema.type}:</span>
-						<span className='text-neutral-400'>{schema.properties.name}</span>
+						<schema.icon className='-mt-1 mr-2 inline-block text-neutral-600' />
+						<span className='mr-1 text-neutral-700'>{schema.type}:</span>
+						{schema.properties.name}
 					</div>
 				))}
+			</div>
+
+			<div className='mb-4 mt-8 flex flex-row justify-between'>
+				<h3 className='font-semibold text-neutral-700'>Canonical URL</h3>
+				{/* <div>We recommend you to setup canonical elsewhere.</div> */}
+				{/* <AiButton>✨</AiButton> */}
 			</div>
 
 			{/* <div className='mb-2 mt-8 font-semibold text-neutral-400'>

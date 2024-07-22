@@ -12,7 +12,7 @@ export const BlogPost = atom<Blog.Post>({
 	status: 'DRAFT',
 	canonical: '',
 	description: '',
-	chronical: {
+	chronicle: {
 		id: '',
 		name: '',
 		slug: '',
@@ -39,7 +39,7 @@ export const LastEditedAt = $atom(BlogPost, 'lastEditedAt')
 
 export const UpdatedAt = $atom(BlogPost, 'updatedAt')
 
-export const Chronical = $atom(BlogPost, 'chronical')
+export const Chronicle = $atom(BlogPost, 'chronicle')
 
 export const Authors = $atom(BlogPost, 'authors')
 

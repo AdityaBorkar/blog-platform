@@ -53,6 +53,9 @@ export default function LinksSection() {
 	// tag
 	// type: text/html / PDF / ...
 
+	// Affiliate/Sponsered Links
+	// Suggested Internal Links
+
 	return (
 		<div className='py-4 text-sm *:px-8'>
 			<div className='flex flex-row justify-around !px-4 py-4 text-center'>

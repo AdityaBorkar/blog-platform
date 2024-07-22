@@ -53,7 +53,7 @@ namespace Blog {
 		status: 'DRAFT' | 'PUBLISHED'
 		canonical: string
 		description: string
-		chronical: { id: string; name: string; slug: string }
+		chronicle: { id: string; name: string; slug: string }
 		authors: string[]
 		category: string
 		tags: string[]

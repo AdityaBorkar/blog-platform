@@ -1,7 +1,6 @@
 'use client'
 
 import { useAtomValue, useSetAtom } from 'jotai'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import type { IconType } from 'react-icons'
@@ -9,23 +8,20 @@ import { LuArrowLeft, LuEye, LuPenSquare } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
 import { BlogPost, Title } from './atoms'
-import TabLayout from './components/TabLayout'
 import ContentEditor from './content/ContentEditor'
 import ContentPreview from './content/ContentPreview'
 import ContentSection from './sections/content'
 import KeywordsSection from './sections/keywords'
 import LinksSection from './sections/links'
-import MediaSection from './sections/media'
 import WebpageSection from './sections/webpage'
 import LoadingSpinner from '@/components/LoadingSpinner'
+import TabLayout from '@/components/TabLayout'
 
 enum View {
 	Preview = 0,
 	Editor = 1,
 }
 
-//  const Page = dynamic(EditBlogPostPage, { ssr: false })
-//  export default Page
 export default function EditBlogPostPage({
 	params,
 }: Readonly<{
@@ -41,7 +37,7 @@ export default function EditBlogPostPage({
 			authors: ['Blog Author'],
 			canonical: 'https://example.com',
 			category: 'Blog Category',
-			chronical: { id: '1', name: '2023', slug: '2023' },
+			chronicle: { id: '1', name: '2023', slug: '2023' },
 			content: {
 				mdx: '<p>Hello World! 🌎️</p>',
 				links: {
@@ -65,6 +61,11 @@ export default function EditBlogPostPage({
 
 	// TODO: Always open Preview by default
 	const [view, setView] = useState<View>(View.Editor)
+
+	// TODO: Focus Mode
+
+	// TODO: Help
+	// https://tiptap.dev/docs/editor/core-concepts/keyboard-shortcuts
 
 	// if (!BlogData.id)
 	// 	return (
@@ -117,9 +118,8 @@ export default function EditBlogPostPage({
 				tabs={[
 					{ name: 'Webpage', component: WebpageSection },
 					{ name: 'Content', component: ContentSection },
-					{ name: 'Links', component: LinksSection },
-					{ name: 'Media', component: MediaSection },
 					{ name: 'Keywords', component: KeywordsSection },
+					{ name: 'Links', component: LinksSection },
 				]}
 			/>
 		</div>

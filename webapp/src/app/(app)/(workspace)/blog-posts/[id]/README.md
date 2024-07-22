@@ -1,6 +1,17 @@
-// Keywords - Primary and Secondary
-
 // Content -
+
+Descriptive Image Names
+Descriptive Alt Text
+
+Image = Lossy 75-85 % and 72dpi
+Lazy loading below the fold
+Image Sitemap
+Google recommends images be at least 1200 px wide and enabled by the  max-image-preview:large setting in robots meta tag to ensure they are surfaced as large images in Google Discover.
+When it comes to SEO, creating descriptive, keyword-rich (not stuffed) file names is absolutely crucial.
+Define Your Dimensions
+images
+
+
 // Image Optimization
 // Multiple Image Sizes (srcset)
 // WebP Conversion
@@ -15,8 +26,6 @@
 
 // Comments -
 // Encouraging comments and interactions
-
-// Keyword Research
 
 // On-Page SEO Checklist:
 // Broken Links

@@ -1,9 +1,11 @@
+import dynamic from 'next/dynamic'
 import { redirect } from 'next/navigation'
 
 import Providers from './Providers'
 import useAuth from '@/hooks/useUser'
 
-export default function AppLayout({
+export default dynamic(() => Promise.resolve(AppLayout), { ssr: false })
+function AppLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
@@ -20,6 +22,8 @@ export default function AppLayout({
 
 	// TODO: New
 	// TODO: Search
+
+	// TODO: Tab Memory Usage < 150 MB
 
 	return <Providers>{children}</Providers>
 }

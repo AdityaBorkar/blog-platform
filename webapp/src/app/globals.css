@@ -33,6 +33,11 @@ details>summary::-webkit-details-marker {
   display: none;
 }
 
+textarea:focus,
+input:focus {
+  outline: none
+}
+
 /* -------------------------------------------------- */
 
 .balance-overflow {
@@ -51,10 +56,29 @@ details>summary::-webkit-details-marker {
 /* -------------------------------------------------- */
 
 /* Basic editor styles */
+
+.ProseMirror-focused {
+  outline: none;
+}
+
 .tiptap {
+  :focus {
+    outline: none;
+  }
+
   :first-child {
     margin-top: 0;
   }
+
+  p.is-empty::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+
+
 
   /* List styles */
   ul,

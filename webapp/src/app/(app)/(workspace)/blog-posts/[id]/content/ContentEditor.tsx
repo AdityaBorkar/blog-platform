@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge'
 import {
 	Authors,
 	Category,
-	Chronical,
+	Chronicle,
 	Description,
 	LastEditedAt,
 	PublishedAt,
@@ -11,8 +11,8 @@ import {
 	Title,
 	UpdatedAt,
 } from '../atoms'
-import MdxEditor from '../components/MdxEditor'
-import MetadataInput from '../components/MetadataInput'
+import MdxEditor from './MdxEditor'
+import MetadataInput from '@/components/MetadataInput'
 
 export default function ContentEditor() {
 	return (
@@ -25,18 +25,18 @@ export default function ContentEditor() {
 			>
 				<MetadataInput atom={Title} label='Title:' className='col-span-3' />
 				<MetadataInput
-					atom={Title}
-					label='Featured Image:'
-					className='col-span-3'
-				/>
-				<MetadataInput
 					atom={Description}
 					label='Meta Description:'
 					className='col-span-3'
 				/>
+				<MetadataInput
+					atom={Title}
+					label='Featured Image:'
+					className='col-span-3'
+				/>
 				<MetadataInput atom={Authors} label='Authors:' />
 				<MetadataInput atom={Category} label='Category:' />
-				<MetadataInput atom={Chronical} label='Chronical:' internal />
+				<MetadataInput atom={Chronicle} label='Chronicle:' internal />
 				<MetadataInput atom={Tags} label='Tags:' className='col-span-3' />
 				<MetadataInput atom={PublishedAt} label='Published on:' readOnly />
 				<MetadataInput atom={UpdatedAt} label='Updated on:' readOnly />

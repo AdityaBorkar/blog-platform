@@ -30,7 +30,7 @@ export default function useAuth() {
 	const navigation = [
 		{ name: 'Dashboard', href: '/dashboard', icon: BiHome },
 		{ name: 'Canvas', href: '/canvas', icon: BiChalkboard },
-		{ name: 'Chronicals', href: '/chronicals', icon: BiMapAlt },
+		{ name: 'Chronicles', href: '/chronicles', icon: BiMapAlt },
 		{ name: 'Blog Posts', href: '/blog-posts', icon: BiPen },
 		{
 			name: 'Blog Metadata',

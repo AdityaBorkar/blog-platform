@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { BiArrowBack, BiChat, BiCog, BiShow, BiSpa } from 'react-icons/bi'
 
-export default function ChronicalPage(props: { params: { id: string } }) {
-	const chronicalId = props.params.id
-	const chronical = {
-		id: chronicalId,
+export default function ChroniclePage(props: { params: { id: string } }) {
+	const chronicleId = props.params.id
+	const chronicle = {
+		id: chronicleId,
 		name: 'Gajab Tichi Adaa (Marathi Natak)',
 		image: '/user-generated/gta.png',
 		content: {
@@ -35,33 +35,33 @@ export default function ChronicalPage(props: { params: { id: string } }) {
 		<div className='px-44 text-neutral-800'>
 			<div className='my-4 flex flex-row items-center justify-between'>
 				<Link
-					href='/chronicals'
+					href='/chronicles'
 					className='-ml-12 rounded-md px-4 py-2 font-medium text-neutral-500 hover:bg-neutral-200 hover:text-black'
 				>
 					<BiArrowBack className='-mt-0.5 mr-3 inline-block size-5' />
-					Back to "List of Chronicals"
+					Back to "List of Chronicles"
 				</Link>
 				<button
 					type='button'
 					className='rounded-md px-4 py-2 font-medium text-neutral-500 hover:bg-neutral-200 hover:text-black'
 				>
 					<BiCog className='-mt-0.5 mr-1 inline-block size-5' />
-					Chronical Settings
+					Chronicle Settings
 				</button>
 			</div>
 
-			<h2 className='mt-16 text-3xl font-semibold'>{chronical.name}</h2>
+			<h2 className='mt-16 text-3xl font-semibold'>{chronicle.name}</h2>
 
 			<div className='my-8 flex flex-row gap-2'>
 				<img
 					alt=''
-					src={chronical.image}
+					src={chronicle.image}
 					className='w-[48rem] rounded-xl object-cover'
 				/>
 				<div className='grid w-[12rem] grid-rows-3 divide-y divide-neutral-400 rounded-xl border border-neutral-400 text-center text-base font-medium text-neutral-500'>
 					<div className='flex flex-col justify-center'>
 						<div className='mb-2 text-3xl font-semibold text-neutral-800'>
-							{chronical.stats.impressions.toLocaleString('hi')}+
+							{chronicle.stats.impressions.toLocaleString('hi')}+
 						</div>
 						<div>
 							<BiShow className='-mt-0.5 mr-1 inline-block size-5' />
@@ -70,7 +70,7 @@ export default function ChronicalPage(props: { params: { id: string } }) {
 					</div>
 					<div className='flex flex-col justify-center'>
 						<div className='mb-2 text-3xl font-semibold text-neutral-800'>
-							{chronical.stats.engagements.toLocaleString('hi')}+
+							{chronicle.stats.engagements.toLocaleString('hi')}+
 						</div>
 						<div>
 							<BiChat className='mr-1 inline-block size-5' />
@@ -79,7 +79,7 @@ export default function ChronicalPage(props: { params: { id: string } }) {
 					</div>
 					<div className='flex flex-col justify-center'>
 						<div className='mb-2 text-3xl font-semibold text-neutral-800'>
-							{chronical.content.total}
+							{chronicle.content.total}
 						</div>
 						<div>
 							<BiSpa className='-mt-1 mr-1 inline-block size-5' />
