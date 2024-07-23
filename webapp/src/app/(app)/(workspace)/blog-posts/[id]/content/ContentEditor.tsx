@@ -48,7 +48,7 @@ export default function ContentEditor() {
 				/>
 			</div>
 
-			<div className='mb-96 cursor-text select-text px-8'>
+			<div className='mb-96 px-8'>
 				<MdxEditor />
 			</div>
 		</div>

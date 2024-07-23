@@ -12,10 +12,14 @@ import {
 	LuItalic,
 	LuLink,
 	LuMessageSquare,
+	LuRedo,
+	LuRedo2,
 	LuStrikethrough,
 	LuSubscript,
 	LuSuperscript,
 	LuUnderline,
+	LuUndo,
+	LuUndo2,
 } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
@@ -78,7 +82,7 @@ export default function Tiptap() {
 			ListKeymap,
 			TrailingNode,
 			SlashCommands,
-			GrammarLinter,
+			// GrammarLinter,
 			// TODO: Make an extension: Image / Youtube / Gist / Tweet / Embed / Link / TOC
 			// CustomBold,
 			// UniqueID.configure({
@@ -95,29 +99,34 @@ export default function Tiptap() {
 	// editor.storage.characterCount.words()
 
 	return (
-		<div className='h-full w-full text-base'>
+		<div className='h-full w-full'>
 			{editor && (
-				<div className='control-group'>
-					<div className='button-group'>
-						<button
-							type='button'
-							onClick={() => editor.chain().focus().undo().run()}
-							disabled={!editor.can().undo()}
-						>
-							Undo
-						</button>
-						<button
-							type='button'
-							onClick={() => editor.chain().focus().redo().run()}
-							disabled={!editor.can().redo()}
-						>
-							Redo
-						</button>
-					</div>
+				<div className='mb-8 flex flex-row gap-4'>
+					<button
+						type='button'
+						onClick={() => editor.chain().focus().undo().run()}
+						disabled={!editor.can().undo()}
+						className='rounded-md border border-neutral-200 px-2 py-1 text-sm disabled:opacity-50'
+					>
+						<LuUndo2 className='-mt-1 mr-1 inline-block size-4' />
+						Undo
+					</button>
+					<button
+						type='button'
+						onClick={() => editor.chain().focus().redo().run()}
+						disabled={!editor.can().redo()}
+						className='rounded-md border border-neutral-200 px-2 py-1 text-sm disabled:opacity-50'
+					>
+						<LuRedo2 className='-mt-1 mr-1 inline-block size-4' />
+						Redo
+					</button>
 				</div>
 			)}
 
-			<EditorContent editor={editor} />
+			<EditorContent
+				editor={editor}
+				className='cursor-text select-text text-base'
+			/>
 
 			{editor && (
 				<BubbleMenu editor={editor} tippyOptions={{ duration: 50 }}>
