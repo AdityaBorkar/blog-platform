@@ -58,6 +58,10 @@ const checks = [
 			'Avoid keyword stuffing',
 		],
 	},
+	{
+		field: 'content.links',
+		test: [],
+	},
 ]
 
 // (Focus Keyphrases / Keywords) in first-para / title / meta description / url / content / subheadings

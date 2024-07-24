@@ -48,9 +48,7 @@ export default function ContentEditor() {
 				/>
 			</div>
 
-			<div className='mb-96 px-8'>
-				<MdxEditor />
-			</div>
+			<MdxEditor />
 		</div>
 	)
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import type { ButtonHTMLAttributes } from 'react'
+import { type ButtonHTMLAttributes, useRef } from 'react'
 import {
 	LuAlignCenter,
 	LuAlignJustify,
@@ -12,20 +12,25 @@ import {
 	LuItalic,
 	LuLink,
 	LuMessageSquare,
-	LuRedo,
 	LuRedo2,
 	LuStrikethrough,
 	LuSubscript,
 	LuSuperscript,
 	LuUnderline,
-	LuUndo,
 	LuUndo2,
 } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
-import GrammarLinter from '@/components/EditorExtensions/GrammarLinter'
+import Codesandbox from '@/components/EditorExtensions/CodeSandbox'
+import ContentLinter from '@/components/EditorExtensions/ContentLinter'
+import Image from '@/components/EditorExtensions/Image'
+import Instagram from '@/components/EditorExtensions/Instagram'
 import SlashCommands from '@/components/EditorExtensions/SlashCommands'
+import Table from '@/components/EditorExtensions/Table'
 import { TrailingNode } from '@/components/EditorExtensions/TrailingNode'
+import Twitter from '@/components/EditorExtensions/Twitter'
+import WebBookmark from '@/components/EditorExtensions/WebBookmark'
+import Youtube from '@/components/EditorExtensions/Youtube'
 import Highlight from '@tiptap/extension-highlight'
 import ListKeymap from '@tiptap/extension-list-keymap'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -38,6 +43,8 @@ import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
 export default function Tiptap() {
+	const WrapperDivRef = useRef<HTMLDivElement>(null)
+
 	// const [content, setContent] = useAtom(Content)
 	const editor = useEditor({
 		// editorProps: {
@@ -82,14 +89,24 @@ export default function Tiptap() {
 			ListKeymap,
 			TrailingNode,
 			SlashCommands,
-			// GrammarLinter,
+			Table,
+			// Spacer,
+			Image,
+			WebBookmark,
+			Youtube,
+			Twitter,
+			Instagram,
+			Codesandbox,
+			ContentLinter,
 			// TODO: Make an extension: Image / Youtube / Gist / Tweet / Embed / Link / TOC
 			// CustomBold,
 			// UniqueID.configure({
 			// 	types: ['heading', 'paragraph'],
 			// }),
 		],
-		content: '<p>Hello World! 🌎️</p>',
+		content: `<p>Hello World! 🌎️</p>
+		<img src="./editor-assets/image-placeholder.png" />
+		<p>Hello World! 🌎️</p>`,
 		// immediatelyRender: false,
 		// shouldRerenderOnTransaction: false,
 	})
@@ -99,7 +116,19 @@ export default function Tiptap() {
 	// editor.storage.characterCount.words()
 
 	return (
-		<div className='h-full w-full'>
+		<div
+			ref={WrapperDivRef}
+			className='h-full w-full px-8 pb-[50vh]'
+			onMouseDown={(e) => {
+				if (e.target !== WrapperDivRef.current) return
+				console.log('I am running')
+				editor
+					?.chain()
+					.setTextSelection(editor.state.doc.content.size)
+					.focus()
+					.run()
+			}}
+		>
 			{editor && (
 				<div className='mb-8 flex flex-row gap-4'>
 					<button
