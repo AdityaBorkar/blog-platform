@@ -53,6 +53,9 @@ importers:
       '@tiptap/extension-superscript':
         specifier: ^2.5.5
         version: 2.5.5(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))
+      '@tiptap/extension-task-item':
+        specifier: ^2.5.6
+        version: 2.5.6(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))(@tiptap/pm@2.5.5)
       '@tiptap/extension-text':
         specifier: ^2.5.5
         version: 2.5.5(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))
@@ -663,6 +666,12 @@ packages:
     resolution: {integrity: sha512-O9YKfctlf7o9k5EPy6OyC98GSGYvGUVsCHJKhLbQ/tkYZ9OuvZ8HtyXfRFWu1ZJ6P818rga3q5Cs5EcbLdcfJw==}
     peerDependencies:
       '@tiptap/core': ^2.5.5
+
+  '@tiptap/extension-task-item@2.5.6':
+    resolution: {integrity: sha512-7MYJ4yZDWrV9ns5rAurXVljSq9vYBRjTnoXgNfg3FCXO0nIvJVvj/35eA+1IOuRQOfnM61ChD68dzHI5GKdWCA==}
+    peerDependencies:
+      '@tiptap/core': ^2.5.6
+      '@tiptap/pm': ^2.5.6
 
   '@tiptap/extension-text-align@2.5.5':
     resolution: {integrity: sha512-cOn7eaEdnn6b36AUA0rEkIW3xpw9FJVOuR2z4UJ6Md7svhIMXGLuPKvS0LrvkozBNmUMYmSKyNlf8Ox68Jr+5A==}
@@ -2918,6 +2927,11 @@ snapshots:
   '@tiptap/extension-superscript@2.5.5(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))':
     dependencies:
       '@tiptap/core': 2.5.5(@tiptap/pm@2.5.5)
+
+  '@tiptap/extension-task-item@2.5.6(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))(@tiptap/pm@2.5.5)':
+    dependencies:
+      '@tiptap/core': 2.5.5(@tiptap/pm@2.5.5)
+      '@tiptap/pm': 2.5.5
 
   '@tiptap/extension-text-align@2.5.5(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))':
     dependencies:

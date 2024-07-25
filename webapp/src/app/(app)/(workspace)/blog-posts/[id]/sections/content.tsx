@@ -65,13 +65,13 @@ function Card(props: {
 	hoverColor: string
 }) {
 	const iconClass = twMerge(
-		'inline-block box-content rounded p-1',
+		'inline-block box-content rounded -mt-1 p-1',
 		props.hoverColor,
 	)
 	return (
 		<div
 			className={twMerge(
-				'flex flex-row justify-between gap-4 rounded-md border-b border-neutral-200 px-2 py-2 text-white',
+				'flex flex-row justify-between rounded-md border-b border-neutral-200 px-2 py-2 text-white',
 				props.bgColor,
 			)}
 		>

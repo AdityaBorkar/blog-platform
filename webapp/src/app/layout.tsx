@@ -31,6 +31,9 @@ export default function RootLayout({
 	const theme = 'light' // localStorage.getItem('theme') || ''
 	return (
 		<html lang='en'>
+			<head>
+				<base href='http://localhost:3000/' />
+			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} ${theme}`}>
 				{children}
 			</body>

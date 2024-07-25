@@ -1,7 +1,7 @@
 import { Extension } from '@tiptap/core'
 
-const Codesandbox = Extension.create({
+const CodeSandbox = Extension.create({
 	name: 'codesandbox',
 })
 
-export default Codesandbox
+export default CodeSandbox

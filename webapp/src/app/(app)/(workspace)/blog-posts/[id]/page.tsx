@@ -62,11 +62,6 @@ export default function EditBlogPostPage({
 	// TODO: Always open Preview by default
 	const [view, setView] = useState<View>(View.Editor)
 
-	// TODO: Focus Mode
-
-	// TODO: Help
-	// https://tiptap.dev/docs/editor/core-concepts/keyboard-shortcuts
-
 	// if (!BlogData.id)
 	// 	return (
 	// 		<div className='flex h-screen items-center justify-center'>
@@ -78,16 +73,16 @@ export default function EditBlogPostPage({
 			<div className='balance-overflow hide-scrollbar relative overflow-auto'>
 				<header
 					className={twMerge(
-						'sticky left-0 top-0 flex flex-row items-center justify-between border-b border-neutral-400 backdrop-blur-lg',
+						'sticky left-0 top-0 z-50 flex flex-row items-center justify-between border-b border-neutral-400 bg-transparent mix-blend-difference backdrop-blur-lg *:text-neutral-400',
 						'dark:border-neutral-800',
 					)}
 				>
 					<HeaderButton icon={LuArrowLeft} href='/blog-posts'>
 						Back to "All Blog Posts"
 					</HeaderButton>
-					<div className='grow cursor-text select-text px-8 py-2.5 text-center'>
-						<BlogTitle />
-					</div>
+
+					<BlogTitle />
+
 					{view === View.Editor ? (
 						<HeaderButton
 							className='w-40 text-right'
@@ -160,5 +155,9 @@ function HeaderButton({
 
 function BlogTitle() {
 	const title = useAtomValue(Title)
-	return <>{title}</>
+	return (
+		<div className='grow cursor-text select-text px-8 py-2.5 text-center'>
+			{title}
+		</div>
+	)
 }

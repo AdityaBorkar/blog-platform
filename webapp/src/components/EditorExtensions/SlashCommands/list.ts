@@ -139,16 +139,7 @@ export const SlashCommandsList = [
 		title: 'Image',
 		icon: LuImagePlus,
 		command({ editor, range }: CommandProps) {
-			editor
-				.chain()
-				.focus()
-				.deleteRange(range)
-				.setImage({
-					src: 'https://example.com/image.jpg',
-					alt: 'Example Image',
-					title: 'Example Image',
-				})
-				.run()
+			editor.chain().focus().deleteRange(range).setImage().run()
 		},
 	},
 	// {

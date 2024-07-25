@@ -11,7 +11,6 @@ import {
 	LuHighlighter,
 	LuItalic,
 	LuLink,
-	LuMessageSquare,
 	LuRedo2,
 	LuStrikethrough,
 	LuSubscript,
@@ -21,12 +20,14 @@ import {
 } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
-import Codesandbox from '@/components/EditorExtensions/CodeSandbox'
+import CodeSandbox from '@/components/EditorExtensions/CodeSandbox'
 import ContentLinter from '@/components/EditorExtensions/ContentLinter'
 import Image from '@/components/EditorExtensions/Image'
+import InlineLink from '@/components/EditorExtensions/InlineLink'
 import Instagram from '@/components/EditorExtensions/Instagram'
 import SlashCommands from '@/components/EditorExtensions/SlashCommands'
 import Table from '@/components/EditorExtensions/Table'
+import Task from '@/components/EditorExtensions/Task'
 import { TrailingNode } from '@/components/EditorExtensions/TrailingNode'
 import Twitter from '@/components/EditorExtensions/Twitter'
 import WebBookmark from '@/components/EditorExtensions/WebBookmark'
@@ -89,6 +90,8 @@ export default function Tiptap() {
 			ListKeymap,
 			TrailingNode,
 			SlashCommands,
+			InlineLink,
+			Task,
 			Table,
 			// Spacer,
 			Image,
@@ -96,24 +99,52 @@ export default function Tiptap() {
 			Youtube,
 			Twitter,
 			Instagram,
-			Codesandbox,
+			CodeSandbox,
 			ContentLinter,
-			// TODO: Make an extension: Image / Youtube / Gist / Tweet / Embed / Link / TOC
 			// CustomBold,
 			// UniqueID.configure({
 			// 	types: ['heading', 'paragraph'],
 			// }),
+			// Abbreviation,
+			// DateTime,
 		],
-		content: `<p>Hello World! 🌎️</p>
-		<img src="./editor-assets/image-placeholder.png" />
-		<p>Hello World! 🌎️</p>`,
+		content: `
+			<p>Hello World! 🌎️</p>
+			<img src="./editor-assets/1600x900.png" /> 
+			<p>Hello World! 🌎️</p>
+			<img src="./user-generated/gta.png" /> 
+		`,
 		// immediatelyRender: false,
 		// shouldRerenderOnTransaction: false,
 	})
 
-	// TODO: Extract Links
-	// editor.storage.characterCount.characters()
-	// editor.storage.characterCount.words()
+	// Copy Duplicate Paste Rearrange Delete Add Block
+	// AI Tools: Change Tone Simplify Text Rephrase Fix Grammar
+
+	// TODO: Undo, Redo, Version History
+	// 	<button
+	// 	type='button'
+	// 	onClick={() => editor.chain().focus().undo().run()}
+	// 	disabled={!editor.can().undo()}
+	// 	className='rounded-md border border-neutral-200 px-2 py-1 text-sm disabled:opacity-50'
+	// >
+	// 	<LuUndo2 className='-mt-1 mr-1 inline-block size-4' />
+	// 	Undo
+	// </button>
+	// <button
+	// 	type='button'
+	// 	onClick={() => editor.chain().focus().redo().run()}
+	// 	disabled={!editor.can().redo()}
+	// 	className='rounded-md border border-neutral-200 px-2 py-1 text-sm disabled:opacity-50'
+	// >
+	// 	<LuRedo2 className='-mt-1 mr-1 inline-block size-4' />
+	// 	Redo
+	// </button>
+
+	// TODO: Focus mode
+	// TODO: Keyboard shortcuts
+	// https://tiptap.dev/docs/editor/core-concepts/keyboard-shortcuts
+	// TODO: Integrated sound and haptic
 
 	return (
 		<div
@@ -121,7 +152,6 @@ export default function Tiptap() {
 			className='h-full w-full px-8 pb-[50vh]'
 			onMouseDown={(e) => {
 				if (e.target !== WrapperDivRef.current) return
-				console.log('I am running')
 				editor
 					?.chain()
 					.setTextSelection(editor.state.doc.content.size)
@@ -129,29 +159,6 @@ export default function Tiptap() {
 					.run()
 			}}
 		>
-			{editor && (
-				<div className='mb-8 flex flex-row gap-4'>
-					<button
-						type='button'
-						onClick={() => editor.chain().focus().undo().run()}
-						disabled={!editor.can().undo()}
-						className='rounded-md border border-neutral-200 px-2 py-1 text-sm disabled:opacity-50'
-					>
-						<LuUndo2 className='-mt-1 mr-1 inline-block size-4' />
-						Undo
-					</button>
-					<button
-						type='button'
-						onClick={() => editor.chain().focus().redo().run()}
-						disabled={!editor.can().redo()}
-						className='rounded-md border border-neutral-200 px-2 py-1 text-sm disabled:opacity-50'
-					>
-						<LuRedo2 className='-mt-1 mr-1 inline-block size-4' />
-						Redo
-					</button>
-				</div>
-			)}
-
 			<EditorContent
 				editor={editor}
 				className='cursor-text select-text text-base'
@@ -159,7 +166,7 @@ export default function Tiptap() {
 
 			{editor && (
 				<BubbleMenu editor={editor} tippyOptions={{ duration: 50 }}>
-					<div className='flex w-fit cursor-default flex-row gap-1 rounded-lg border border-neutral-300 bg-neutral-200 p-0.5 text-sm'>
+					<div className='flex w-fit cursor-default flex-row gap-1 rounded-lg border border-neutral-300 bg-neutral-200 p-0.5 text-sm shadow'>
 						<BubbleMenuButton
 							isActive={editor.isActive('bold')}
 							onClick={() => editor.chain().focus().toggleBold().run()}
@@ -236,22 +243,12 @@ export default function Tiptap() {
 						>
 							<LuHighlighter />
 						</BubbleMenuButton>
-						{/* <Button
-							isActive={editor.isActive('highlight')}
-							onClick={() =>
-								editor.chain().focus().toggl('underline').run()
-							}
+						<BubbleMenuButton
+							isActive={editor.isActive('link')}
+							onClick={() => editor.chain().focus().toggleLink().run()}
 						>
 							<LuLink />
-						</Button> */}
-						{/* <Button
-							isActive={editor.isActive('highlight')}
-							onClick={() =>
-								editor.chain().focus().toggleMark('underline').run()
-							}
-						>
-							<LuMessageSquare />
-						</Button> */}
+						</BubbleMenuButton>
 					</div>
 				</BubbleMenu>
 			)}

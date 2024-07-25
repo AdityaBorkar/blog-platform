@@ -1,5 +1,7 @@
 import TaskItem from '@tiptap/extension-task-item'
 
-const CustomTaskItem = TaskItem.extend({
+const Task = TaskItem.extend({
 	content: 'inline*',
 })
+
+export default Task

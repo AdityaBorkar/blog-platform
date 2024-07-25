@@ -19,6 +19,7 @@ export const TrailingNode = Extension.create({
 				appendTransaction: (_, __, state) => {
 					const { doc, tr, schema } = state
 					const shouldInsertNodeAtEnd = plugin.getState(state)
+					console.log({ shouldInsertNodeAtEnd })
 					const endPosition = doc.content.size
 					const type = schema.nodes.paragraph // Type of node to insert
 
@@ -28,12 +29,16 @@ export const TrailingNode = Extension.create({
 				state: {
 					init: (_, state) => {
 						const lastNode = state.tr.doc.lastChild
-						return !!lastNode?.content.size
+						if (['heading', 'paragraph'].includes(lastNode?.type.name || ''))
+							return !!lastNode?.content.size
+						return true
 					},
 					apply: (tr, value) => {
 						if (!tr.docChanged) return value
 						const lastNode = tr.doc.lastChild
-						return !!lastNode?.content.size
+						if (['heading', 'paragraph'].includes(lastNode?.type.name || ''))
+							return !!lastNode?.content.size
+						return true
 					},
 				},
 			}),
