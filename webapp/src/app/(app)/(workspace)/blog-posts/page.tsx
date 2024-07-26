@@ -4,7 +4,6 @@ import { useAtom } from 'jotai'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { BiGridAlt, BiListUl, BiPlus } from 'react-icons/bi'
-import { twMerge } from 'tailwind-merge'
 
 import { BlogPost } from './[id]/atoms'
 import NavButton from '@/components/NavButton'
@@ -13,6 +12,7 @@ import Select from '@/components/Select'
 import TableCell from '@/components/Table/TableCell'
 import TableHeader from '@/components/Table/TableHeader'
 import ToggleSelector from '@/components/ToggleSelector'
+import { cn } from '@/lib/utils'
 import { posts as POSTS } from '@/migration/posts'
 
 enum ViewLayout {
@@ -54,7 +54,7 @@ export default function BlogPosts() {
 	return (
 		<div className='*:px-32'>
 			<header
-				className={twMerge(
+				className={cn(
 					'sticky left-0 top-0 z-50 flex w-full flex-row items-center gap-4 border-b border-neutral-300 py-4 backdrop-blur-xl',
 					'dark:border-neutral-900',
 				)}
@@ -117,7 +117,7 @@ export default function BlogPosts() {
 function PostListItem({ post }: { post: Blog.Post }) {
 	return (
 		<TableCell
-			className={twMerge(
+			className={cn(
 				'text-neutral-700 *:px-1 *:py-1.5 hover:bg-neutral-200 hover:text-neutral-900',
 				'dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
 				'grid grid-cols-[8rem_1fr_12rem_8rem_8rem] gap-x-2 gap-y-2',
@@ -153,7 +153,7 @@ function PostGridItem({ post }: { post: Blog.Post }) {
 	return (
 		<Link
 			href={`/blog-posts/${post.id}`}
-			className={twMerge(
+			className={cn(
 				'relative rounded-xl border border-neutral-300 text-neutral-700 hover:border-neutral-400 hover:bg-neutral-100 hover:text-neutral-900 hover:shadow-lg',
 				'dark:border-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-neutral-100',
 			)}

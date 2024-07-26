@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { BiGridAlt, BiListUl, BiPlus } from 'react-icons/bi'
-import { twMerge } from 'tailwind-merge'
 
 import NavButton from '@/components/NavButton'
 import SearchInput from '@/components/SearchInput'
@@ -11,6 +10,7 @@ import Select from '@/components/Select'
 import TableCell from '@/components/Table/TableCell'
 import TableHeader from '@/components/Table/TableHeader'
 import ToggleSelector from '@/components/ToggleSelector'
+import { cn } from '@/lib/utils'
 import { authors as AUTHORS } from '@/migration/authors'
 
 enum ViewLayout {
@@ -38,7 +38,7 @@ export default function BlogMetadataAuthorsPage() {
 	return (
 		<div className='*:px-32'>
 			<header
-				className={twMerge(
+				className={cn(
 					'sticky left-0 top-0 z-50 flex w-full flex-row items-center gap-4 border-b border-neutral-300 py-4 backdrop-blur-xl',
 					'dark:border-neutral-900',
 				)}
@@ -78,7 +78,7 @@ export default function BlogMetadataAuthorsPage() {
 						<Link
 							key={author.id}
 							href={`/blog-metadata/authors/${author.id}`}
-							className={twMerge(
+							className={cn(
 								'rounded-xl border border-neutral-300 p-2 hover:border-neutral-400 hover:shadow-md',
 								'dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
 							)}

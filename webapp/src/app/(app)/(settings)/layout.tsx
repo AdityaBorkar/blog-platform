@@ -4,10 +4,10 @@ import { useAtom } from 'jotai'
 import Link from 'next/link'
 import type { IconType } from 'react-icons'
 import { BiArrowBack, BiCog } from 'react-icons/bi'
-import { twMerge } from 'tailwind-merge'
 
 import { darkModeAtom } from './preferences'
 import useAuth from '@/hooks/useUser'
+import { cn } from '@/lib/utils'
 
 export default function AppLayout({
 	children,
@@ -24,7 +24,7 @@ export default function AppLayout({
 	return (
 		<div className='grid h-screen grid-cols-[16rem_auto] font-sans text-sm'>
 			<nav
-				className={twMerge(
+				className={cn(
 					'relative border-r-2 border-neutral-200 bg-neutral-200/50 px-4 font-medium text-neutral-600',
 					'dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400',
 				)}
@@ -39,7 +39,7 @@ export default function AppLayout({
 				<div className='absolute bottom-4 left-0 w-full'>
 					{isOffline && (
 						<div
-							className={twMerge(
+							className={cn(
 								'mx-auto w-fit rounded border border-neutral-300 px-2 py-1 font-mono text-xs [word-spacing:-0.2rem]',
 								'dark:border-neutral-700',
 							)}
@@ -59,13 +59,13 @@ function NavLink(props: { href: string; icon: IconType; name: string }) {
 	return (
 		<Link
 			href={props.href}
-			className={twMerge(
+			className={cn(
 				'block rounded-md border border-transparent px-4 py-2 hover:border-neutral-300/50 hover:bg-neutral-200 hover:text-neutral-900',
 				'dark:hover:bg-neutral-900 dark:hover:text-neutral-200',
 			)}
 		>
 			<props.icon
-				className={twMerge(
+				className={cn(
 					'-mt-0.5 mr-2 inline-block size-[1.125rem] text-neutral-600',
 					'dark:text-neutral-500',
 				)}

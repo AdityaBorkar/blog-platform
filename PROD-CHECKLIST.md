@@ -23,8 +23,6 @@
 
 - 
 - 
-- 
-- 
 
 ## Basket 4: AMP
 
@@ -52,3 +50,6 @@ Features:
 
 - Analytics
 - Newsletter
+- https://www.framer.com/motion/guide-reduce-bundle-size/
+- https://www.framer.com/motion/guide-accessibility/
+- Make sure no color is hardcoded

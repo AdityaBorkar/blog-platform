@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@/lib/utils'
 
 export default function TableCell(props: {
 	children: React.ReactNode
@@ -6,7 +6,7 @@ export default function TableCell(props: {
 }) {
 	return (
 		<div
-			className={twMerge(
+			className={cn(
 				'grid border border-neutral-300 bg-neutral-50',
 				'dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
 				props.className,

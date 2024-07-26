@@ -1,9 +1,9 @@
 import { useAtomValue } from 'jotai'
 import type { IconType } from 'react-icons'
 import { LuArrowUpRight, LuLink2, LuUnlink } from 'react-icons/lu'
-import { twMerge } from 'tailwind-merge'
 
 import { ExternalLinks, InternalLinks } from '../atoms'
+import { cn } from '@/lib/utils'
 
 export default function LinksSection() {
 	const internalLinks = useAtomValue(InternalLinks)
@@ -85,13 +85,13 @@ export default function LinksSection() {
 function LinkStat(props: { icon: IconType; number: number; name: string }) {
 	return (
 		<div
-			className={twMerge(
+			className={cn(
 				'rounded-md px-4 py-2 hover:bg-neutral-200/50 hover:text-neutral-950',
 				'dark:hover:text-neutral-200',
 			)}
 		>
 			<div
-				className={twMerge(
+				className={cn(
 					'text-lg font-semibold text-neutral-800',
 					'dark:text-neutral-300',
 				)}

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { LuFileText } from 'react-icons/lu'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/utils'
 
 export default function ReportsLayout({
 	children,
@@ -15,7 +16,7 @@ export default function ReportsLayout({
 	return (
 		<div className='grid h-screen grid-cols-[16rem_auto]'>
 			<div
-				className={twMerge(
+				className={cn(
 					'overflow-auto border-r border-neutral-300 px-4 pt-24',
 					'dark:border-neutral-800',
 				)}
@@ -24,7 +25,7 @@ export default function ReportsLayout({
 					<Link
 						key={report.name}
 						href={`/reports/${report.id}`}
-						className={twMerge(
+						className={cn(
 							'block rounded-md px-4 py-2 font-medium text-neutral-600 hover:bg-neutral-200/50',
 							'dark:text-neutral-400 dark:hover:bg-neutral-900',
 						)}

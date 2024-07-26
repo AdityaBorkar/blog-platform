@@ -1,8 +1,8 @@
 import { LuCalendar, LuFile, LuUser } from 'react-icons/lu'
-import { twMerge } from 'tailwind-merge'
 
 import AiButton from '@/components/AiButton'
 import Button from '@/components/Button'
+import { cn } from '@/lib/utils'
 
 export default function WebpageSection() {
 	const schema = [
@@ -60,8 +60,6 @@ export default function WebpageSection() {
 
 	return (
 		<div className='px-12 py-8'>
-			<Button>Schedule / Publish</Button>
-
 			{/* <div>Crawl Status</div> */}
 
 			<div className='mb-4 mt-8 flex flex-row justify-between'>
@@ -78,7 +76,7 @@ export default function WebpageSection() {
 				{schema.map((schema) => (
 					<div
 						key={schema.properties.id}
-						className={twMerge(
+						className={cn(
 							'block w-full truncate rounded-md border border-neutral-200 px-4 py-2.5 font-medium text-neutral-400 hover:bg-neutral-200/50',
 							'dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-900',
 						)}
@@ -104,7 +102,7 @@ export default function WebpageSection() {
 					schema.map((schema) => (
 						<div
 							key={schema.properties.id}
-							className={twMerge(
+							className={cn(
 								'line-clamp-1 w-full truncate rounded-md border border-neutral-800 px-4 py-2.5 font-medium text-neutral-300',
 								'hover:bg-neutral-900',
 							)}

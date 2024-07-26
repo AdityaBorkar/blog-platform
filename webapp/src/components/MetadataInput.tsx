@@ -2,7 +2,8 @@ import type { PrimitiveAtom, WritableAtom } from 'jotai'
 import { useAtom } from 'jotai'
 import { useId } from 'react'
 import { LuEyeOff } from 'react-icons/lu'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/utils'
 
 export default function MetadataInput<T>({
 	atom,
@@ -21,16 +22,16 @@ export default function MetadataInput<T>({
 	const [value, setValue] = useAtom(atom)
 
 	return (
-		<label htmlFor={uuid} className={twMerge('px-8 py-2', className)}>
+		<label htmlFor={uuid} className={cn('px-8 py-2', className)}>
 			<div
-				className={twMerge(
+				className={cn(
 					'mt-2 block text-sm font-medium text-neutral-600',
 					'dark:text-neutral-400',
 				)}
 			>
 				{internal && (
 					<LuEyeOff
-						className={twMerge(
+						className={cn(
 							'mx-1 -mt-1 inline-block text-neutral-500',
 							'dark:text-neutral-400',
 						)}
@@ -47,7 +48,7 @@ export default function MetadataInput<T>({
 					// console.log('onChange: ', e.target.value)
 					setValue(e.target.value)
 				}}
-				className={twMerge(
+				className={cn(
 					'h-au -ml-2 w-full cursor-text select-text rounded-md px-2 py-2 text-neutral-900',
 					'dark:text-neutral-300',
 				)}

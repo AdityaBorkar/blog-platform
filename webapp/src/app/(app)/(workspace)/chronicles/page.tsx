@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { BiGridAlt, BiListUl, BiPlus } from 'react-icons/bi'
-import { twMerge } from 'tailwind-merge'
 
 import NavButton from '@/components/NavButton'
 import SearchInput from '@/components/SearchInput'
@@ -11,6 +10,7 @@ import Select from '@/components/Select'
 import TableCell from '@/components/Table/TableCell'
 import TableHeader from '@/components/Table/TableHeader'
 import ToggleSelector from '@/components/ToggleSelector'
+import { cn } from '@/lib/utils'
 
 enum ViewLayout {
 	Grid = 0,
@@ -72,7 +72,7 @@ export default function ChroniclesPage() {
 	return (
 		<div className='font-sans *:px-32'>
 			<header
-				className={twMerge(
+				className={cn(
 					'sticky left-0 top-0 z-50 flex w-full flex-row items-center gap-4 border-b border-neutral-300 py-4 backdrop-blur-xl',
 					'dark:border-neutral-900',
 				)}

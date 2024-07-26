@@ -1,8 +1,8 @@
 import { LuDownload, LuMail, LuPencilRuler } from 'react-icons/lu'
-import { twMerge } from 'tailwind-merge'
 
 import SpoofAPI from './spoof-api'
 import Button from '@/components/Button'
+import { cn } from '@/lib/utils'
 
 export default function ReportPage({
 	params: { id },
@@ -32,7 +32,7 @@ export default function ReportPage({
 				</div>
 			</div>
 			<div
-				className={twMerge(
+				className={cn(
 					'mt-2 select-text border-b border-neutral-300 pb-8 text-lg font-medium text-neutral-400',
 					'dark:border-neutral-800 dark:text-neutral-500',
 				)}
@@ -41,9 +41,7 @@ export default function ReportPage({
 			</div>
 
 			<div
-				className={twMerge(
-					report.render === 'grid' ? 'grid grid-cols-4 gap-8' : '',
-				)}
+				className={cn(report.render === 'grid' ? 'grid grid-cols-4 gap-8' : '')}
 			>
 				.
 				{

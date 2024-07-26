@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@/lib/utils'
 
 export default function NavButton({
 	children,
@@ -8,7 +8,7 @@ export default function NavButton({
 	return (
 		<button
 			type='button'
-			className={twMerge(
+			className={cn(
 				'rounded-md border border-neutral-300 bg-neutral-100 px-4 py-2 font-semibold',
 				'dark:border-neutral-700 dark:bg-neutral-900',
 				className,

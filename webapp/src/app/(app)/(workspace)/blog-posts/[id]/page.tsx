@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import type { IconType } from 'react-icons'
 import { LuArrowLeft, LuEye, LuPenSquare } from 'react-icons/lu'
-import { twMerge } from 'tailwind-merge'
 
 import { BlogPost, Title } from './atoms'
 import ContentEditor from './content/ContentEditor'
@@ -16,6 +15,7 @@ import LinksSection from './sections/links'
 import WebpageSection from './sections/webpage'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import TabLayout from '@/components/TabLayout'
+import { cn } from '@/lib/utils'
 
 enum View {
 	Preview = 0,
@@ -69,10 +69,10 @@ export default function EditBlogPostPage({
 	// 		</div>
 	// 	)
 	return (
-		<div className='grid h-screen grid-cols-[auto_24rem]'>
+		<div className='grid h-screen grid-cols-[auto_16rem]'>
 			<div className='balance-overflow hide-scrollbar relative overflow-auto'>
 				<header
-					className={twMerge(
+					className={cn(
 						'sticky left-0 top-0 z-50 flex flex-row items-center justify-between border-b border-neutral-400 bg-transparent mix-blend-difference backdrop-blur-lg *:text-neutral-400',
 						'dark:border-neutral-800',
 					)}
@@ -83,6 +83,7 @@ export default function EditBlogPostPage({
 
 					<BlogTitle />
 
+					<HeaderButton icon={LuEye}>Schedule / Publish</HeaderButton>
 					{view === View.Editor ? (
 						<HeaderButton
 							className='w-40 text-right'
@@ -106,10 +107,7 @@ export default function EditBlogPostPage({
 			</div>
 
 			<TabLayout
-				className={twMerge(
-					'border-l border-neutral-400',
-					'dark:border-neutral-800',
-				)}
+				className={cn('border-l border-neutral-400', 'dark:border-neutral-800')}
 				tabs={[
 					{ name: 'Webpage', component: WebpageSection },
 					{ name: 'Content', component: ContentSection },
@@ -134,7 +132,7 @@ function HeaderButton({
 	children: React.ReactNode
 	className?: string
 }) {
-	const classList = twMerge(
+	const classList = cn(
 		'px-4 py-2 text-sm text-neutral-600 hover:text-neutral-900',
 		'dark:text-neutral-400 dark:hover:text-neutral-200',
 		className,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { LuAlignCenter, LuCrop, LuReplace } from 'react-icons/lu'
-import { twMerge } from 'tailwind-merge'
 
+import { cn } from '@/lib/utils'
 import { NodeViewWrapper } from '@tiptap/react'
 
 type EditorExtension_ImageComponentProps = {
@@ -39,7 +39,7 @@ export default function EditorExtension_ImageComponent({
 					<div className='relative mx-auto w-3/5'>
 						<img src={node.attrs.src} alt={node.attrs.alt} />
 						<div
-							className={twMerge(
+							className={cn(
 								'absolute left-4 top-4 flex-row gap-0.5 rounded-lg border border-neutral-300 bg-neutral-200 p-1 shadow-md group-hover:flex',
 								isUploading ? 'flex' : 'hidden',
 							)}
@@ -58,7 +58,7 @@ export default function EditorExtension_ImageComponent({
 
 					<div className='mx-auto w-4/5'>
 						<div className='flex flex-row pt-2'>
-							<span className='relative top-1 mr-2 h-fit rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 text-xs font-semibold text-neutral-500'>
+							<span className='relative top-1 mr-2 h-fit rounded-md border border-neutral-300 bg-neutral-100 px-2 py-1 text-xs font-semibold text-neutral-400'>
 								ALT TEXT
 							</span>
 							<input
@@ -72,7 +72,7 @@ export default function EditorExtension_ImageComponent({
 							/>
 						</div>
 						<div className='flex flex-row pt-2'>
-							<span className='relative top-1 mr-2 h-fit rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 text-xs font-semibold text-neutral-500'>
+							<span className='relative top-1 mr-2 h-fit rounded-md border border-neutral-300 bg-neutral-100 px-2 py-1 text-xs font-semibold text-neutral-400'>
 								CAPTION
 							</span>
 							<input

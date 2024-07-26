@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { BiGridAlt, BiListUl, BiPlus } from 'react-icons/bi'
-import { twMerge } from 'tailwind-merge'
 
 import NavButton from '@/components/NavButton'
 import SearchInput from '@/components/SearchInput'
@@ -11,6 +10,7 @@ import Select from '@/components/Select'
 import TableCell from '@/components/Table/TableCell'
 import TableHeader from '@/components/Table/TableHeader'
 import ToggleSelector from '@/components/ToggleSelector'
+import { cn } from '@/lib/utils'
 import { categories as CATEGORIES } from '@/migration/categories'
 
 enum ViewLayout {
@@ -38,7 +38,7 @@ export default function BlogMetadataCategoriesPage() {
 	return (
 		<div className='*:px-32'>
 			<header
-				className={twMerge(
+				className={cn(
 					'sticky left-0 top-0 z-50 flex w-full flex-row items-center gap-4 border-b border-neutral-300 py-4 backdrop-blur-xl',
 					'dark:border-neutral-900',
 				)}
@@ -78,13 +78,13 @@ export default function BlogMetadataCategoriesPage() {
 						<Link
 							key={category.id}
 							href={`/blog-metadata/categories/${category.id}`}
-							className={twMerge(
+							className={cn(
 								'rounded-md border border-neutral-300 px-4 py-2 hover:bg-neutral-200 hover:text-neutral-900',
 								'dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
 							)}
 						>
 							<div
-								className={twMerge(
+								className={cn(
 									category.color,
 									'-mb-1 mr-2 inline-block size-5 rounded-full bg-red-400',
 								)}
@@ -110,10 +110,7 @@ export default function BlogMetadataCategoriesPage() {
 							className='grid-cols-[8rem_1fr_1fr_8rem_8rem] *:px-1 *:py-1'
 						>
 							<div
-								className={twMerge(
-									category.color,
-									'size-8 rounded-full bg-red-100',
-								)}
+								className={cn(category.color, 'size-8 rounded-full bg-red-100')}
 							/>
 							<div className='text-left'>{category.name}</div>
 							<div className='text-left'>/{category.slug}</div>

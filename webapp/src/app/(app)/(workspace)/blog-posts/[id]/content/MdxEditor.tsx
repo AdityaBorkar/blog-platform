@@ -18,7 +18,6 @@ import {
 	LuUnderline,
 	LuUndo2,
 } from 'react-icons/lu'
-import { twMerge } from 'tailwind-merge'
 
 import CodeSandbox from '@/components/EditorExtensions/CodeSandbox'
 import ContentLinter from '@/components/EditorExtensions/ContentLinter'
@@ -32,6 +31,7 @@ import { TrailingNode } from '@/components/EditorExtensions/TrailingNode'
 import Twitter from '@/components/EditorExtensions/Twitter'
 import WebBookmark from '@/components/EditorExtensions/WebBookmark'
 import Youtube from '@/components/EditorExtensions/Youtube'
+import { cn } from '@/lib/utils'
 import Highlight from '@tiptap/extension-highlight'
 import ListKeymap from '@tiptap/extension-list-keymap'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -152,6 +152,7 @@ export default function Tiptap() {
 			className='h-full w-full px-8 pb-[50vh]'
 			onMouseDown={(e) => {
 				if (e.target !== WrapperDivRef.current) return
+				e.preventDefault()
 				editor
 					?.chain()
 					.setTextSelection(editor.state.doc.content.size)
@@ -267,7 +268,7 @@ function BubbleMenuButton({
 	return (
 		<button
 			type='button'
-			className={twMerge(
+			className={cn(
 				'cursor-default rounded-md p-1.5',
 				isActive ? 'bg-neutral-100' : 'hover:bg-neutral-100',
 			)}

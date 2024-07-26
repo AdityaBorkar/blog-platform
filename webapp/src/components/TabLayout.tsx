@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/utils'
 
 export default function TabLayout({
 	className,
@@ -14,9 +15,9 @@ export default function TabLayout({
 	const [tabIndex, setTabIndex] = useState(1)
 	const Component = tabs[tabIndex].component
 	return (
-		<aside className={twMerge('relative', className)}>
+		<aside className={cn('relative', className)}>
 			<header
-				className={twMerge(
+				className={cn(
 					'sticky top-0 grid grid-cols-4 border-b border-neutral-400 text-center',
 					'dark:border-neutral-800',
 				)}
@@ -26,7 +27,7 @@ export default function TabLayout({
 						key={item.name}
 						type='button'
 						onClick={() => setTabIndex(index)}
-						className={twMerge(
+						className={cn(
 							'relative block cursor-default py-2.5 font-medium',
 							'text-neutral-500 dark:text-neutral-500',
 							'after:absolute after:bottom-[-1px] after:left-0 after:h-0 after:w-full',
@@ -43,7 +44,7 @@ export default function TabLayout({
 			</header>
 
 			<div
-				className={twMerge(
+				className={cn(
 					'overflow-auto text-neutral-700',
 					'dark:text-neutral-300',
 				)}

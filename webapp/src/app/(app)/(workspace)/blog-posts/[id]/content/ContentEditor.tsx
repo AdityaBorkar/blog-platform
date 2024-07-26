@@ -1,5 +1,3 @@
-import { twMerge } from 'tailwind-merge'
-
 import {
 	Authors,
 	Category,
@@ -13,12 +11,13 @@ import {
 } from '../atoms'
 import MdxEditor from './MdxEditor'
 import MetadataInput from '@/components/MetadataInput'
+import { cn } from '@/lib/utils'
 
 export default function ContentEditor() {
 	return (
 		<div className='mx-auto my-8 w-[56rem] py-8'>
 			<div
-				className={twMerge(
+				className={cn(
 					'mb-16 grid grid-cols-3 divide-y divide-neutral-300 rounded-2xl border border-neutral-300',
 					'dark:divide-neutral-800 dark:border-neutral-800',
 				)}

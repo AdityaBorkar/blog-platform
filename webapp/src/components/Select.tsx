@@ -1,5 +1,6 @@
 import { BiChevronDown } from 'react-icons/bi'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/utils'
 
 export default function Select<ValueType>({
 	value,
@@ -14,7 +15,7 @@ export default function Select<ValueType>({
 	const option = options.find((option) => option.value === value)
 	return (
 		<div
-			className={twMerge(
+			className={cn(
 				'relative min-w-48 rounded-md border border-neutral-200 bg-neutral-100 px-4 py-2 font-medium text-neutral-700',
 				'dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400',
 			)}

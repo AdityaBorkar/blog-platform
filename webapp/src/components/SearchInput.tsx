@@ -1,5 +1,6 @@
 import { BiSearch } from 'react-icons/bi'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/utils'
 
 export default function SearchInput({
 	placeholder,
@@ -17,7 +18,7 @@ export default function SearchInput({
 				placeholder={placeholder}
 				// value={value}
 				// onChange={(event) => setValue(event.target.value)}
-				className={twMerge(
+				className={cn(
 					'w-full rounded-md border border-neutral-200 py-1.5 pl-10 pr-4 text-base font-medium text-neutral-700',
 					'dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400',
 				)}

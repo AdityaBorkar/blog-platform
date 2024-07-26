@@ -1,5 +1,6 @@
 import { LuCheckCheck, LuChevronDown, LuChevronUp, LuEye } from 'react-icons/lu'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/utils'
 
 export default function ContentSection() {
 	return (
@@ -47,7 +48,7 @@ export default function ContentSection() {
 				</div>
 
 				<div
-					className={twMerge(
+					className={cn(
 						'mx-auto mt-6 w-fit rounded-md bg-green-100 px-4 py-1.5 text-xs font-medium text-green-900 hover:bg-green-200 hover:shadow',
 						'dark:border-green-500 dark:bg-green-900 dark:text-green-300 dark:hover:bg-green-800',
 					)}
@@ -64,24 +65,24 @@ function Card(props: {
 	bgColor: string
 	hoverColor: string
 }) {
-	const iconClass = twMerge(
+	const iconClass = cn(
 		'inline-block box-content rounded -mt-1 p-1',
 		props.hoverColor,
 	)
 	return (
 		<div
-			className={twMerge(
+			className={cn(
 				'flex flex-row justify-between rounded-md border-b border-neutral-200 px-2 py-2 text-white',
 				props.bgColor,
 			)}
 		>
 			<div>
-				<LuEye className={twMerge('mr-1', iconClass)} />
+				<LuEye className={cn('mr-1', iconClass)} />
 				<span>{props.children}</span>
 			</div>
 			<div>
-				<LuChevronUp className={twMerge(iconClass)} />
-				<LuChevronDown className={twMerge(iconClass)} />
+				<LuChevronUp className={cn(iconClass)} />
+				<LuChevronDown className={cn(iconClass)} />
 			</div>
 		</div>
 	)

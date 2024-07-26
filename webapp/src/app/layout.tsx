@@ -3,19 +3,16 @@ import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 
 import './globals.css'
+import { cn } from '@/lib/utils'
 
-// TODO: Change font=name
-const geistSans = Inter({
-	variable: '--font-geist-sans',
+const fontSans = Inter({
 	subsets: ['latin'],
+	variable: '--font-sans',
 })
-// const geistSans = localFont({
-// 	src: './fonts/GeistVF.woff',
-// 	variable: '--font-geist-sans',
-// })
-const geistMono = localFont({
+
+const fontMono = localFont({
 	src: './fonts/GeistMonoVF.woff',
-	variable: '--font-geist-mono',
+	variable: '--font-mono',
 })
 
 export const metadata: Metadata = {
@@ -34,7 +31,14 @@ export default function RootLayout({
 			<head>
 				<base href='http://localhost:3000/' />
 			</head>
-			<body className={`${geistSans.variable} ${geistMono.variable} ${theme}`}>
+			<body
+				className={cn(
+					theme,
+					fontSans.variable,
+					fontMono.variable,
+					'min-h-screen bg-background font-sans text-foreground antialiased',
+				)}
+			>
 				{children}
 			</body>
 		</html>
