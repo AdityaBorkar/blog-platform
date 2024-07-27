@@ -33,10 +33,6 @@ export default function Dropdown({
 				initial={{ scaleY: 0 }}
 				animate={{ scaleY: 1 }}
 				transition={{ duration: 0.3 }}
-				className={cn(
-					'rounded-md border border-transparent p-1 font-bold hover:border-neutral-300 hover:bg-neutral-100',
-					'dark:hover:border-neutral-700 dark:hover:bg-neutral-900',
-				)}
 			>
 				{summary}
 			</motion.summary>

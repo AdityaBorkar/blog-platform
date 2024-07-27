@@ -61,7 +61,7 @@
 
 @layer base {
   * {
-    @apply border-border transition-all;
+    /* @apply border-border transition-all duration-500; */
   }
 
   *::selection {
@@ -105,6 +105,20 @@
     ::-webkit-scrollbar {
       display: none;
     }
+  }
+}
+
+@layer base {
+  .bg-secondary {
+    @apply hover:bg-neutral-50 bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-950;
+  }
+
+  .border-button {
+    @apply border border-neutral-300 dark:border-neutral-800;
+  }
+
+  .button-sm {
+    @apply bg-secondary border-button rounded-md p-1.5 hover:shadow-md
   }
 }
 

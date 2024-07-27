@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 
 export default function OfflineIndicator() {
 	// TODO: REPLOCAL
-	const isOnline = true
+	const isOnline = false
 
 	if (isOnline) return null
 	return (

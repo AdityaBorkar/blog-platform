@@ -1,10 +1,12 @@
 import dynamic from 'next/dynamic'
 import { redirect } from 'next/navigation'
 
+import Monitoring from './Monitoring'
 import Providers from './Providers'
 import useAuth from '@/hooks/useUser'
 
 export default dynamic(() => Promise.resolve(AppLayout), { ssr: false })
+
 function AppLayout({
 	children,
 }: Readonly<{
@@ -17,13 +19,14 @@ function AppLayout({
 	// TODO: Initialize Replocal
 	// TODO: Register Database
 	// TODO: Register LocalStorage
-	// const { isOffline } = ReplocalInstance({ db: null, storage: null })
-	const isOffline = true
+	// TODO: Provider to give access to children
+	// const replocal = ReplocalInstance({ db: null, storage: null })
 
-	// TODO: New
-	// TODO: Search
+	return (
+		<Providers>
+			<Monitoring />
 
-	// TODO: Tab Memory Usage < 150 MB
-
-	return <Providers>{children}</Providers>
+			{children}
+		</Providers>
+	)
 }

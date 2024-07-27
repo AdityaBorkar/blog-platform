@@ -107,12 +107,12 @@ export default function ChroniclesPage() {
 			</header>
 
 			{view.layout === ViewLayout.Grid ? (
-				<div className='grid grid-cols-4 gap-6 py-16'>
+				<div className='grid grid-cols-1 gap-4 py-16 md:grid-cols-3 2xl:grid-cols-4'>
 					{chronicles.map((chronicle) => (
 						<Link
 							key={chronicle.id}
 							href={`/chronicles/${chronicle.id}`}
-							className='relative z-0 h-48 rounded-xl border border-neutral-300 bg-neutral-50 hover:opacity-90 hover:shadow-lg'
+							className='relative z-0 h-48 rounded-xl border border-neutral-300 bg-neutral-50 duration-500 hover:scale-105 hover:shadow-xl hover:shadow-neutral-700/30'
 						>
 							<img
 								src='/user-generated/gta.png'
@@ -132,7 +132,7 @@ export default function ChroniclesPage() {
 				</div>
 			</div> */}
 
-							<div className='absolute bottom-0 mt-2 w-full rounded-b-xl bg-gradient-to-t from-black/100 via-black/60 to-black/0 px-4 pb-2 pt-8 text-base font-semibold text-white'>
+							<div className='absolute bottom-0 mt-2 w-full text-pretty rounded-b-xl bg-gradient-to-t from-black/100 via-black/60 to-black/0 px-4 pb-2 pt-8 text-base font-semibold text-white'>
 								{chronicle.name}
 							</div>
 						</Link>

@@ -4,26 +4,70 @@ import Link from 'next/link'
 import {
 	BiChevronDown,
 	BiCog,
-	BiEdit,
 	BiLogOut,
-	BiSearch,
+	BiLogoGithub,
+	BiLogoLinkedin,
+	BiLogoTwitter,
 	BiUser,
 } from 'react-icons/bi'
 
+import FeedbackDialog from './FeedbackDialog'
+import NewDialog from './NewDialog'
 import OfflineIndicator from './OfflineIndicator'
-import Dropdown from '@/components/Dropdown'
+import SearchDialog from './SearchDialog'
 import useAuth from '@/hooks/useUser'
 import { cn } from '@/lib/utils'
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from '@/ui/dialog'
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from '@/ui/dropdown-menu'
+
+const LogoutButton = {
+	button: (
+		<button
+			type='button'
+			className={cn('hover:bg-neutral-100', 'dark:hover:bg-neutral-800')}
+		>
+			<BiLogOut className='-mt-1 mr-2 inline-block size-4' />
+			Logout
+		</button>
+	),
+	dialog: (
+		// TODO: Work on Buttons
+		<DialogContent>
+			<DialogHeader>
+				<DialogTitle>Are you sure?</DialogTitle>
+				<DialogDescription>
+					You have to re-login to your account. Are you sure you want to logout
+					of this account?
+				</DialogDescription>
+			</DialogHeader>
+			<DialogFooter>
+				<button type='submit'>Logout</button>
+				<button type='reset'>Cancel</button>
+			</DialogFooter>
+		</DialogContent>
+	),
+}
 
 export default function AppLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	const { user, brand, navigation } = useAuth()
-
-	// TODO: New
-	// TODO: Search
+	const { brand, navigation } = useAuth()
 
 	return (
 		<div className='grid h-screen grid-cols-[16rem_auto] font-sans text-sm'>
@@ -34,102 +78,69 @@ export default function AppLayout({
 				)}
 			>
 				<div className='mb-8 mt-5 flex flex-row items-center justify-between gap-2'>
-					<Dropdown
-						summary={
-							<>
+					<Dialog>
+						<DropdownMenu>
+							<DropdownMenuTrigger
+								className={cn(
+									'rounded-md border border-transparent p-1 font-bold hover:border-neutral-300 hover:bg-neutral-100',
+									'dark:hover:border-neutral-700 dark:hover:bg-neutral-900',
+								)}
+							>
 								<div className='-mb-1 mr-1 inline-block size-5 rounded bg-orange-500' />
 								{brand.name}
 								<BiChevronDown className='-mt-1 inline-block size-5' />
-							</>
-						}
-					>
-						<Link
-							href='/settings/site'
-							className={cn(
-								'rounded-t-md py-2 pl-4 pr-12 hover:bg-neutral-100',
-								'dark:hover:bg-neutral-800',
-							)}
-						>
-							<BiCog className='-mt-1 mr-2 inline-block size-4' />
-							Site Settings
-						</Link>
-						<Link
-							href='/settings/account'
-							className={cn(
-								'py-2 pl-4 pr-12 hover:bg-neutral-100',
-								'dark:hover:bg-neutral-800',
-							)}
-						>
-							<BiUser className='-mt-1 mr-2 inline-block size-4' />
-							Account Settings
-						</Link>
-						<button
-							type='button'
-							className={cn(
-								'rounded-b-md border-t border-neutral-200 py-2 pl-4 pr-12 text-left hover:bg-neutral-100',
-								'dark:border-neutral-700 dark:hover:bg-neutral-800',
-							)}
-						>
-							<BiLogOut className='-mt-1 mr-2 inline-block size-4' />
-							Logout
-						</button>
-					</Dropdown>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent>
+								<DropdownMenuItem>
+									<Link href='/settings/site'>
+										<BiCog className='-mt-1 mr-2 inline-block size-4' />
+										Site Settings
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem>
+									<Link href='/settings/account'>
+										<BiUser className='-mt-1 mr-2 inline-block size-4' />
+										Account Settings
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuSeparator />
+								<DialogTrigger asChild>
+									<DropdownMenuItem>{LogoutButton.button}</DropdownMenuItem>
+								</DialogTrigger>
+							</DropdownMenuContent>
+
+							{LogoutButton.dialog}
+						</DropdownMenu>
+					</Dialog>
 					<div>
-						<button
-							type='button'
-							className={cn(
-								'mr-1 box-border rounded-md border border-transparent p-1.5 hover:border-neutral-300 hover:bg-neutral-50 hover:shadow-md',
-								'dark:hover:border-neutral-800 dark:hover:bg-neutral-900',
-							)}
-							onClick={() => {}}
-						>
-							<BiSearch className='size-4' />
-						</button>
-						<button
-							type='button'
-							className={cn(
-								'rounded-md border border-neutral-300 bg-neutral-50 p-1.5 hover:shadow-md',
-								'dark:border-neutral-800 dark:bg-neutral-900',
-							)}
-							onClick={() => {}}
-						>
-							<BiEdit className='size-4' />
-						</button>
+						<SearchDialog />
+						<NewDialog />
 					</div>
 				</div>
 
-				{navigation.map((item) =>
-					!item.items ? (
-						<Link
+				{navigation.map((item) => {
+					const icon = (
+						<item.icon
 							key={item.name}
-							href={item.href}
 							className={cn(
-								'block rounded-md border border-transparent px-4 py-2 hover:border-neutral-300/50 hover:bg-neutral-200 hover:text-neutral-900',
-								'dark:hover:bg-neutral-900 dark:hover:text-neutral-200',
+								'-mt-0.5 mr-2 inline-block size-[1.125rem] text-neutral-600',
+								'dark:text-neutral-500',
 							)}
-						>
-							<item.icon
-								className={cn(
-									'-mt-0.5 mr-2 inline-block size-[1.125rem] text-neutral-600',
-									'dark:text-neutral-500',
-								)}
-							/>
+						/>
+					)
+					const parentClass = cn(
+						'block rounded-md border border-transparent px-4 py-2 hover:border-neutral-300/50 hover:bg-neutral-200 hover:text-neutral-900',
+						'dark:hover:bg-neutral-900 dark:hover:text-neutral-200',
+					)
+					return !item.items ? (
+						<Link key={item.name} href={item.href} className={parentClass}>
+							{icon}
 							{item.name}
 						</Link>
 					) : (
 						<details key={item.name} open={item.open}>
-							<summary
-								className={cn(
-									'block rounded-md border border-transparent px-4 py-2 hover:border-neutral-300/50 hover:bg-neutral-200 hover:text-neutral-900',
-									'dark:hover:bg-neutral-900 dark:hover:text-neutral-200',
-								)}
-							>
-								<item.icon
-									className={cn(
-										'-mt-0.5 mr-2 inline-block size-[1.125rem] text-neutral-600',
-										'dark:text-neutral-500',
-									)}
-								/>
+							<summary className={parentClass}>
+								{icon}
 								{item.name}
 							</summary>
 							<div
@@ -152,69 +163,27 @@ export default function AppLayout({
 								))}
 							</div>
 						</details>
-					),
-				)}
+					)
+				})}
 
 				<div className='absolute bottom-4 left-0 w-full'>
 					<OfflineIndicator />
+					<FeedbackDialog />
+					<div className='flex flex-row justify-evenly px-8'>
+						<Link href='' className='cursor-pointer' target='_blank'>
+							<BiLogoGithub className='size-5' />
+						</Link>
+						<Link href='' className='cursor-pointer' target='_blank'>
+							<BiLogoTwitter className='size-5' />
+						</Link>
+						<Link href='' className='cursor-pointer' target='_blank'>
+							<BiLogoLinkedin className='size-5' />
+						</Link>
+					</div>
 				</div>
 			</nav>
 
 			<div className='balance-overflow overflow-auto'>{children}</div>
 		</div>
-	)
-}
-
-function HeaderButton({
-	icon: Icon,
-	href,
-	onClick,
-	children,
-	className,
-}: {
-	href?: string
-	onClick?: () => void
-	icon: IconType
-	children: React.ReactNode
-	className?: string
-}) {
-	const classList = cn(
-		'px-4 py-2 text-sm text-neutral-600 hover:text-neutral-900',
-		'dark:text-neutral-400 dark:hover:text-neutral-200',
-		className,
-	)
-
-	return href ? (
-		<Link href={href} className={classList}>
-			<Icon className='-mt-1 mr-2 inline-block' />
-			{children}
-		</Link>
-	) : (
-		<button type='button' className={classList} onClick={onClick}>
-			<Icon className='-mt-1 mr-2 inline-block' />
-			{children}
-		</button>
-	)
-}
-
-function HeaderLink({
-	href,
-	children,
-	className,
-}: {
-	href: string
-	children: React.ReactNode
-	className?: string
-}) {
-	const classList = cn(
-		'px-4 py-2 text-sm text-neutral-600 hover:text-neutral-900',
-		'dark:text-neutral-400 dark:hover:text-neutral-200',
-		className,
-	)
-
-	return (
-		<Link href={href} className={classList}>
-			{children}
-		</Link>
 	)
 }

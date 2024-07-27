@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { BiArrowBack, BiChat, BiCog, BiShow, BiSpa } from 'react-icons/bi'
 
+import Button from '@/components/Button'
+
 export default function ChroniclePage(props: { params: { id: string } }) {
 	const chronicleId = props.params.id
 	const chronicle = {
@@ -34,20 +36,14 @@ export default function ChroniclePage(props: { params: { id: string } }) {
 	return (
 		<div className='px-44 text-neutral-800'>
 			<div className='my-4 flex flex-row items-center justify-between'>
-				<Link
-					href='/chronicles'
-					className='-ml-12 rounded-md px-4 py-2 font-medium text-neutral-500 hover:bg-neutral-200 hover:text-black'
-				>
+				<Button type='ghost' href='/chronicles' className='-ml-12'>
 					<BiArrowBack className='-mt-0.5 mr-3 inline-block size-5' />
 					Back to "List of Chronicles"
-				</Link>
-				<button
-					type='button'
-					className='rounded-md px-4 py-2 font-medium text-neutral-500 hover:bg-neutral-200 hover:text-black'
-				>
+				</Button>
+				<Button type='ghost'>
 					<BiCog className='-mt-0.5 mr-1 inline-block size-5' />
 					Chronicle Settings
-				</button>
+				</Button>
 			</div>
 
 			<h2 className='mt-16 text-3xl font-semibold'>{chronicle.name}</h2>

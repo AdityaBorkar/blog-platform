@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ViewTransitions } from 'next-view-transitions'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 
@@ -25,22 +26,25 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
+	// TODO: Prelight Hints and LocalStorage. Do it with Settings.
 	const theme = 'light' // localStorage.getItem('theme') || ''
 	return (
-		<html lang='en'>
-			<head>
-				<base href='http://localhost:3000/' />
-			</head>
-			<body
-				className={cn(
-					theme,
-					fontSans.variable,
-					fontMono.variable,
-					'min-h-screen bg-background font-sans text-foreground antialiased',
-				)}
-			>
-				{children}
-			</body>
-		</html>
+		<ViewTransitions>
+			<html lang='en'>
+				<head>
+					<base href={process.env.DOMAIN} />
+				</head>
+				<body
+					className={cn(
+						theme,
+						fontSans.variable,
+						fontMono.variable,
+						'min-h-screen bg-background font-sans text-foreground antialiased',
+					)}
+				>
+					{children}
+				</body>
+			</html>
+		</ViewTransitions>
 	)
 }

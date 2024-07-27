@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation'
 
-// This must be server-rendered page
 export default async function LoginPage() {
 	const user = null
 
