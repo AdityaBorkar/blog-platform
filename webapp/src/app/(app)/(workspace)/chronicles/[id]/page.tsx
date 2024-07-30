@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { BiArrowBack, BiChat, BiCog, BiShow, BiSpa } from 'react-icons/bi'
 
-import Button from '@/components/Button'
+import Button from '@/ui/button'
 
 export default function ChroniclePage(props: { params: { id: string } }) {
 	const chronicleId = props.params.id

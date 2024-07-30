@@ -3,6 +3,7 @@ import { ViewTransitions } from 'next-view-transitions'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 
+import Theme from './Theme'
 import './globals.css'
 import { cn } from '@/lib/utils'
 
@@ -26,8 +27,6 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	// TODO: Prelight Hints and LocalStorage. Do it with Settings.
-	const theme = 'light' // localStorage.getItem('theme') || ''
 	return (
 		<ViewTransitions>
 			<html lang='en'>
@@ -36,12 +35,16 @@ export default function RootLayout({
 				</head>
 				<body
 					className={cn(
-						theme,
 						fontSans.variable,
 						fontMono.variable,
-						'min-h-screen bg-background font-sans text-foreground antialiased',
+						'min-h-screen cursor-default select-none bg-background font-sans text-foreground antialiased',
 					)}
+					style={{
+						fontSynthesis: 'none',
+						fontFeatureSettings: '"rlig" 1, "calt" 1',
+					}}
 				>
+					<Theme />
 					{children}
 				</body>
 			</html>

@@ -1,18 +1,15 @@
-import { cn } from '@/lib/utils'
+'use client'
+
+import { NetworkStatus, useLocalNetworkStatus } from '@/local'
 
 export default function OfflineIndicator() {
-	// TODO: REPLOCAL
-	const isOnline = false
+	const status = useLocalNetworkStatus()
 
-	if (isOnline) return null
+	if (status === NetworkStatus.Online) return null
 	return (
-		<div
-			className={cn(
-				'mx-auto w-fit rounded border border-neutral-300 px-2 py-1 font-mono text-xs [word-spacing:-0.2rem]',
-				'dark:border-neutral-700',
-			)}
-		>
-			⚡CHANGES SAVED OFFLINE
+		<div className='mx-auto w-fit rounded border border-border px-2 py-1 font-mono text-xs [word-spacing:-0.2rem]'>
+			<span className='font-sans'>⚡</span>
+			CHANGES SAVED OFFLINE
 		</div>
 	)
 }

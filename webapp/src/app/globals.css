@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: #f4f4f5;
+    --foreground: #27272a;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
@@ -20,7 +20,7 @@
     --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
+    --border: #d4d4d8;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
     --radius: 0.5rem;
@@ -29,11 +29,16 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+
+    ::selection {
+      @apply bg-orange-400 text-black;
+    }
   }
 
+
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: #18181b;
+    --foreground: #e4e4e7;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
@@ -48,7 +53,7 @@
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
+    --border: #3f3f46;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;
@@ -57,24 +62,22 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+
+  .bg-secondary {
+    @apply hover:bg-neutral-50 bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-950;
+  }
+
+  .border-button {
+    @apply border border-neutral-300 dark:border-neutral-800;
+  }
+
+  .button-sm {
+    @apply bg-secondary border-button rounded-md p-1.5 hover:shadow-md
+  }
 }
 
 @layer base {
-  * {
-    /* @apply border-border transition-all duration-500; */
-  }
-
-  *::selection {
-    @apply bg-orange-400 text-black;
-  }
-
-  body {
-    font-synthesis: none;
-    font-feature-settings: "rlig" 1, "calt" 1;
-
-    @apply bg-background text-foreground;
-    @apply bg-neutral-100 cursor-default select-none text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200;
-  }
 
   a,
   button {
@@ -91,7 +94,7 @@
 
   textarea:focus,
   input:focus {
-    outline: none
+    outline: none;
   }
 
   .balance-overflow {
@@ -108,21 +111,7 @@
   }
 }
 
-@layer base {
-  .bg-secondary {
-    @apply hover:bg-neutral-50 bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-950;
-  }
-
-  .border-button {
-    @apply border border-neutral-300 dark:border-neutral-800;
-  }
-
-  .button-sm {
-    @apply bg-secondary border-button rounded-md p-1.5 hover:shadow-md
-  }
-}
-
-@layer base {
+@layer components {
   .ProseMirror-focused {
     outline: none;
   }

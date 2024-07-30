@@ -1,8 +1,8 @@
 import { LuDownload, LuMail, LuPencilRuler } from 'react-icons/lu'
 
 import SpoofAPI from './spoof-api'
-import Button from '@/components/Button'
 import { cn } from '@/lib/utils'
+import Button from '@/ui/button'
 
 export default function ReportPage({
 	params: { id },
